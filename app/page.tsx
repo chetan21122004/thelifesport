@@ -1,0 +1,304 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { useInView } from "react-intersection-observer"
+import {
+  Play,
+  ChevronRight,
+  ChevronDown,
+  Phone,
+  MapPin,
+  Mail,
+  Clock,
+  Instagram,
+  Facebook,
+  Twitter,
+  Youtube,
+  ArrowUp,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { CorporateEventsSection } from "@/components/corporate-events-section"
+import { TestimonialsSection } from "@/components/testimonials-section"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+
+function CountUpAnimation({ end, duration = 2000, label }: { end: number, duration?: number, label: string }) {
+  const [count, setCount] = useState(0)
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+
+  useEffect(() => {
+    if (!inView) return
+
+    let startTime: number
+    let animationFrame: number
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = (currentTime - startTime) / duration
+
+      if (progress < 1) {
+        setCount(Math.floor(end * progress))
+        animationFrame = requestAnimationFrame(animate)
+      } else {
+        setCount(end)
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+
+    return () => cancelAnimationFrame(animationFrame)
+  }, [end, duration, inView])
+
+  return (
+    <div ref={ref} className="text-center transform transition-all duration-700 hover:scale-110">
+      <div className="relative">
+        <div className="text-5xl font-bold text-[#800020]">
+          {count}+
+        </div>
+        <div className="absolute -inset-1 rounded-lg  group-hover:opacity-30 transition-all duration-500"></div>
+      </div>
+      <div className="mt-2 text-sm font-medium text-gray-600 uppercase tracking-wider">{label}</div>
+    </div>
+  )
+}
+
+export default function HomePage() {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative h-[90vh] overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="relative h-full w-full">
+              {/* Hero Image Slider */}
+              <div className="absolute inset-0">
+                <Image
+                  src="https://www.thelifesports.in/wp-content/uploads/2018/12/Life-Sports-Banner.jpg"
+                  alt="The Life Sports Facility"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#800020]/80 to-black/50"></div>
+            </div>
+          </div>
+
+          <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center px-4 text-center text-white">
+            <h1 className="mb-4 max-w-4xl text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+              INVEST ONE HOUR A DAY FOR YOU AND YOUR FAMILY, GET IMMEDIATE RESULTS AND LONG-TERM BENEFITS
+            </h1>
+            <Button className="mt-8 bg-yellow-500 hover:bg-yellow-600 text-[#800020] font-bold px-8 py-6 text-lg">
+              ENROLL FOR TRIAL SESSION!
+            </Button>
+          </div>
+        </section>
+
+        {/* Activities Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="mb-12 text-center">
+              <div className="text-center max-w-3xl mx-auto mb-4">
+              <div className="inline-flex items-center justify-center">
+                <div className="h-px w-8 bg-[#800020]"></div>
+                <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#800020]">Activities</span>
+                <div className="h-px w-8 bg-[#800020]"></div>
+              </div>
+
+            </div>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">TOP SPORTS COACHING IN PUNE</h2>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "BADMINTON COURT | BADMINTON ACADEMY IN PUNE",
+                  description: "Smash it up with the World Badminton Federation approved synthetic flooring. The Life Sports welcomes players from all age groups to join the fun.",
+                  image: "https://www.thelifesports.in/wp-content/uploads/2020/02/best-football-club-in-pune-1.jpg",
+                },
+                {
+                  title: "TABLE TENNIS COURT IN PUNE",
+                  description: "Rooted in the core principles of excellence and passion, the Life Sports Academy aspires to offer the best Table Tennis Coaching in Pune.",
+                  image: "https://www.thelifesports.in/wp-content/uploads/2020/02/WhatsApp-Image-2022-05-10-at-5.52.45-PM.jpg",
+                },
+                {
+                  title: "GYMNASTICS CLASSES | GYMNASTICS ACADEMY IN PUNE",
+                  description: "The Life Sport is one of the best academy for Gymnastics Coaching in Pune. At Life Sports Gymnastics Academy in Pune, each student is trained diversion better and without limitations.",
+                  image: "https://www.thelifesports.in/wp-content/uploads/2020/02/DSC_0569-1__1582550125_103.51.93.157.jpg",
+                },
+                {
+                  title: "DANCE",
+                  description: "Standing among the reputed dance classes in Pune, the Life sports academy provides a platform to learn various dance forms and encourages various dancers to showcase their talent through various competitions.",
+                  image: "https://www.thelifesports.in/wp-content/uploads/2020/02/Lifesports-Banner-2-1.jpg",
+                },
+                {
+                  title: "BOX CRICKET",
+                  description: "Cricket in India needs no introduction! The passion, thrill, and craze are just unmatchable. Cricket is one such game that can be played both socially and competitively.",
+                  image: "https://www.thelifesports.in/wp-content/uploads/2020/02/best-football-club-in-pune-1.jpg",
+                },
+                {
+                  title: "CRICKET NET",
+                  description: "Cricket net is a practice net used by players to improve cricketing techniques. Cricket nets are enclosed by nets on either side and optionally the roof.",
+                  image: "https://www.thelifesports.in/wp-content/uploads/2020/02/WhatsApp-Image-2022-05-10-at-5.52.45-PM.jpg",
+                },
+              ].map((activity, index) => (
+                <Card key={index} className="group overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                  <CardHeader className="p-0">
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <Image
+                        src={activity.image}
+                        alt={activity.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        priority={index < 3}
+                      />
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-6 py-3 sm:h-2/5 ">
+                    <h3 className="text-xl font-bold text-[#800020]">{activity.title}</h3>
+                    <p className="mt-2 text-gray-600">{activity.description}</p>
+                  </CardContent>
+                  <CardFooter className="p-6 pt-0 flex gap-4 mt-auto">
+                    <Button className="flex-1 bg-[#800020] hover:bg-[#800020]/90 text-white">
+                      Enquire Now
+                    </Button>
+                    <Button variant="outline" className="flex-1 hover:bg-yellow-500 hover:text-white">
+                      Read More
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Corporate Events Section */}
+        <CorporateEventsSection />
+
+        {/* About Section */}
+        <section className="relative py-6 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+            <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000000" fill-opacity="0.2"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', backgroundSize: '60px 60px' }}></div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            {/* Section Header */}
+            <div className="text-center max-w-3xl mx-auto mb-4">
+              <div className="inline-flex items-center justify-center">
+                <div className="h-px w-8 bg-[#800020]"></div>
+                <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#800020]">About Us</span>
+                <div className="h-px w-8 bg-[#800020]"></div>
+              </div>
+
+            </div>
+
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              {/* Left Content */}
+              <div className="flex-1 max-w-2xl">
+                <div className="inline-block">
+                  <span className="text-sm uppercase tracking-wider font-semibold bg-gradient-to-r from-[#800020] to-red-600 bg-clip-text text-transparent">
+                    Discover Our Legacy
+                  </span>
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6 leading-tight">
+                  Pune's Premier
+                  <span className="relative inline-block px-2">
+                    <span className="relative z-10 bg-gradient-to-r from-[#800020] to-red-600 bg-clip-text text-transparent">Sports Academy</span>
+                    <div className="absolute bottom-2 left-0 w-full h-3 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 -rotate-2"></div>
+                  </span>
+                </h2>
+
+                <div className="space-y-6 text-lg text-gray-600">
+                  <p className="leading-relaxed">
+                    For over a decade, Life Sports has been at the forefront of sports excellence in Pune, Maharashtra. Our commitment goes beyond training – we're dedicated to making India a sporting nation, one athlete at a time.
+                  </p>
+                  <p className="leading-relaxed">
+                    We provide a comprehensive sports environment where both children and adults can enhance their physical abilities and mental fortitude. Our state-of-the-art facilities and expert coaching create the perfect platform for athletic development.
+                  </p>
+                </div>
+
+                <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-8">
+                  <CountUpAnimation end={10} label="Years of Excellence" />
+                  <CountUpAnimation end={5000} duration={3000} label="Happy Athletes" />
+                  <CountUpAnimation end={20} label="Expert Coaches" />
+                </div>
+              </div>
+
+              {/* Right Images */}
+              <div className="flex-1 relative w-full max-w-xl aspect-square">
+                {/* Main Image */}
+                <div className="absolute w-[80%] h-[80%] top-0 right-0 transform transition-all duration-700 hover:scale-105">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://www.thelifesports.in/wp-content/uploads/2020/02/best-football-club-in-pune-1.jpg"
+                      alt="Sports Training at Life Sports"
+                      fill
+                      className="object-cover transform transition-transform duration-700 hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  </div>
+                </div>
+
+                {/* Secondary Image */}
+                <div className="absolute w-[60%] h-[60%] bottom-0 left-0 transform transition-all duration-700 hover:scale-105">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://www.thelifesports.in/wp-content/uploads/2020/02/WhatsApp-Image-2022-05-10-at-5.52.45-PM.jpg"
+                      alt="Indoor Sports Facility"
+                      fill
+                      className="object-cover transform transition-transform duration-700 hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-full blur-2xl"></div>
+                <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-gradient-to-br from-[#800020]/20 to-red-600/20 rounded-full blur-2xl"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <TestimonialsSection maxItems={4} />
+      </main>
+
+      <Footer />
+
+      {/* Floating Buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <Button className="h-14 w-14 rounded-full bg-[#800020] p-0 shadow-lg hover:bg-[#800020]/90">
+          <ArrowUp className="h-6 w-6" />
+        </Button>
+        <Button className="h-14 w-14 rounded-full bg-[#800020] p-0 shadow-lg hover:bg-[#800020]/90">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-6 w-6"
+          >
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </Button>
+      </div>
+    </div>
+  )
+}
