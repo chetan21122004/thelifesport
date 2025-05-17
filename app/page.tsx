@@ -166,9 +166,9 @@ export default function HomePage() {
             <div className="mb-12 text-center">
               <div className="text-center max-w-3xl mx-auto mb-4">
                 <div className="inline-flex items-center justify-center">
-                  <div className="h-px w-8 bg-[#f39318]"></div>
-                  <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#f39318]">Activities</span>
-                  <div className="h-px w-8 bg-[#f39318]"></div>
+                  <div className="h-px w-8 bg-gradient-to-r from-[#f39318] to-[#FF5500]"></div>
+                  <span className="mx-4 text-3xl uppercase tracking-wider font-semibold bg-gradient-to-r from-[#f39318] to-[#FF5500] bg-clip-text text-transparent">Activities</span>
+                  <div className="h-px w-8 bg-gradient-to-r from-[#FF5500] to-[#f39318]"></div>
                 </div>
               </div>
               <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">TOP SPORTS COACHING IN PUNE</h2>
@@ -217,17 +217,18 @@ export default function HomePage() {
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         priority={index < 3}
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
                   </CardHeader>
-                  <CardContent className="p-6 py-3 sm:h-2/5 ">
-                    <h3 className="text-xl font-bold text-orange-600">{activity.title}</h3>
+                  <CardContent className="p-6 py-3 sm:h-2/5">
+                    <h3 className="text-xl font-bold bg-gradient-to-r from-[#f39318] to-[#FF5500] bg-clip-text text-transparent">{activity.title}</h3>
                     <p className="mt-2 text-gray-600">{activity.description}</p>
                   </CardContent>
                   <CardFooter className="p-6 pt-0 flex gap-4 mt-auto">
-                    <Button className="flex-1 bg-orange-500 hover:bg-orange-600 text-white">
+                    <Button className="flex-1 bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-105 shadow-lg">
                       Enquire Now
                     </Button>
-                    <Button variant="outline" className="flex-1 hover:bg-yellow-500 hover:text-white">
+                    <Button variant="outline" className="flex-1 border-2 border-[#f39318]/30 hover:border-[#f39318] bg-white/5 backdrop-blur-sm text-gray-700 hover:bg-gradient-to-r hover:from-[#f39318] hover:to-[#FF5500] hover:text-white transition-all duration-300 hover:scale-105">
                       Read More
                     </Button>
                   </CardFooter>
