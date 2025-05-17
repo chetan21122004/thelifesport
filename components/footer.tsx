@@ -10,15 +10,19 @@ const quickLinks = [
   { name: "Blogs", href: "/blogs" },
   { name: "Book My Court", href: "/book-court" },
   { name: "Contact", href: "/contact" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Sitemap", href: "/sitemap" },
 ]
 
 const activities = [
-  { name: "Badminton Court In Pune", href: "#" },
-  { name: "Table Tennis Coaching in Pune", href: "#" },
-  { name: "Gymnastics Classes in Pune", href: "#" },
-  { name: "Dance Classes In Pune", href: "#" },
-  { name: "Box Cricket Ground In Pune", href: "#" },
-  { name: "Football Academy in Pune", href: "#" },
+  { name: "Badminton Court In Pune", href: "/activities/badminton" },
+  { name: "Table Tennis Coaching in Pune", href: "/activities/table-tennis" },
+  { name: "Gymnastics Classes in Pune", href: "/activities/gymnastics" },
+  { name: "Dance Classes In Pune", href: "/activities/dance" },
+  { name: "Box Cricket Ground In Pune", href: "/activities/box-cricket" },
+  { name: "Football Academy in Pune", href: "/activities/football" },
+  { name: "Yoga Classes", href: "/activities/yoga" },
+  { name: "Cricket Net Practice", href: "/activities/cricket-net" },
 ]
 
 const contactInfo = [
@@ -30,26 +34,27 @@ const contactInfo = [
 ]
 
 const socialLinks = [
-  { icon: Facebook, href: "#" },
-  { icon: Twitter, href: "#" },
-  { icon: Instagram, href: "#" },
-  { icon: Youtube, href: "#" },
+  { icon: Facebook, href: "https://facebook.com/thelifesportsacademy" },
+  { icon: Twitter, href: "https://twitter.com/thelifesports" },
+  { icon: Instagram, href: "https://instagram.com/thelifesportsacademy" },
+  { icon: Youtube, href: "https://youtube.com/thelifesportsacademy" },
 ]
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#800020] to-[#600010] text-white border-t-2 border-yellow-400">
+    <footer className="bg-gradient-to-b from-[#FF5500] to-[#f39318] text-white border-t-2 border-yellow-400">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="text-lg font-bold text-yellow-400 mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold text-white mb-4 border-b-2 border-yellow-400 pb-2 inline-block">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link 
                     href={link.href} 
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
+                    className="text-white/90 hover:text-yellow-400 transition-colors flex items-center gap-2 group"
                   >
+                    <span className="h-1 w-1 bg-yellow-400 rounded-full group-hover:w-2 transition-all duration-300"></span>
                     {link.name}
                   </Link>
                 </li>
@@ -58,14 +63,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-yellow-400 mb-4">Activities</h3>
+            <h3 className="text-lg font-bold text-white mb-4 border-b-2 border-yellow-400 pb-2 inline-block">Activities</h3>
             <ul className="space-y-2">
               {activities.map((activity) => (
                 <li key={activity.name}>
                   <Link 
                     href={activity.href} 
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
+                    className="text-white/90 hover:text-yellow-400 transition-colors flex items-center gap-2 group"
                   >
+                    <span className="h-1 w-1 bg-yellow-400 rounded-full group-hover:w-2 transition-all duration-300"></span>
                     {activity.name}
                   </Link>
                 </li>
@@ -74,22 +80,22 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-yellow-400 mb-4">Contact Us</h3>
+            <h3 className="text-lg font-bold text-white mb-4 border-b-2 border-yellow-400 pb-2 inline-block">Contact Us</h3>
             <ul className="space-y-4">
               {contactInfo.map((info, index) => (
-                <li key={index} className="flex items-start gap-2">
+                <li key={index} className="flex items-start gap-3 group">
                   {info.type === "phone" && (
-                    <Phone className="h-5 w-5 text-orange-500 flex-shrink-0" />
+                    <Phone className="h-5 w-5 text-yellow-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
                   )}
                   {info.type === "email" && (
-                    <Mail className="h-5 w-5 text-orange-500 flex-shrink-0" />
+                    <Mail className="h-5 w-5 text-yellow-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
                   )}
                   {info.type === "address" && (
-                    <MapPin className="h-5 w-5 text-orange-500 flex-shrink-0 mt-1" />
+                    <MapPin className="h-5 w-5 text-yellow-400 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                   )}
                   <Link 
                     href={info.href} 
-                    className="text-white/80 hover:text-yellow-400 transition-colors"
+                    className="text-white/90 hover:text-yellow-400 transition-colors"
                   >
                     {info.value}
                   </Link>
@@ -99,7 +105,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-yellow-400 mb-4">Follow Us</h3>
+            <h3 className="text-lg font-bold text-white mb-4 border-b-2 border-yellow-400 pb-2 inline-block">Follow Us</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon
@@ -107,9 +113,9 @@ export function Footer() {
                   <Link
                     key={index}
                     href={social.href}
-                    className="rounded-full bg-orange-500 p-2 text-white hover:bg-orange-600 transition-colors hover:scale-110 transform duration-200"
+                    className="rounded-full bg-white/10 p-3 text-white hover:bg-yellow-400 hover:text-[#f39318] transition-all duration-300 hover:scale-110 transform group"
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   </Link>
                 )
               })}
@@ -118,9 +124,9 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 bg-black/10">
         <div className="container mx-auto px-4 py-6">
-          <div className="text-center text-white/80">
+          <div className="text-center text-white/90">
             <p>Copyright © {new Date().getFullYear()} The Life Sports Academy Driven By Skovian Ventures</p>
           </div>
         </div>

@@ -25,6 +25,7 @@ import { CorporateEventsSection } from "@/components/corporate-events-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { cn } from "@/lib/utils"
 
 function CountUpAnimation({ end, duration = 2000, label }: { end: number, duration?: number, label: string }) {
   const [count, setCount] = useState(0)
@@ -59,10 +60,10 @@ function CountUpAnimation({ end, duration = 2000, label }: { end: number, durati
   return (
     <div ref={ref} className="text-center transform transition-all duration-700 hover:scale-110">
       <div className="relative">
-        <div className="text-5xl font-bold text-[#800020]">
+        <div className="text-5xl font-bold text-[#f39318]">
           {count}+
         </div>
-        <div className="absolute -inset-1 rounded-lg  group-hover:opacity-30 transition-all duration-500"></div>
+        <div className="absolute -inset-1 rounded-lg group-hover:opacity-30 transition-all duration-500"></div>
       </div>
       <div className="mt-2 text-sm font-medium text-gray-600 uppercase tracking-wider">{label}</div>
     </div>
@@ -70,16 +71,31 @@ function CountUpAnimation({ end, duration = 2000, label }: { end: number, durati
 }
 
 export default function HomePage() {
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[90vh] overflow-hidden">
+        <section className="relative min-h-[90vh] overflow-hidden">
+          {/* Background Image and Overlay */}
           <div className="absolute inset-0">
             <div className="relative h-full w-full">
-              {/* Hero Image Slider */}
               <div className="absolute inset-0">
                 <Image
                   src="https://www.thelifesports.in/wp-content/uploads/2018/12/Life-Sports-Banner.jpg"
@@ -89,17 +105,58 @@ export default function HomePage() {
                   priority
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#800020]/80 to-black/50"></div>
+              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+              
+              {/* Decorative Elements */}
+              <div className="absolute inset-0">
+                <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#f39318]/30 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FF5500]/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+              </div>
             </div>
           </div>
 
-          <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center px-4 text-center text-white">
-            <h1 className="mb-4 max-w-4xl text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-              INVEST ONE HOUR A DAY FOR YOU AND YOUR FAMILY, GET IMMEDIATE RESULTS AND LONG-TERM BENEFITS
-            </h1>
-            <Button className="mt-8 bg-yellow-500 hover:bg-yellow-600 text-[#800020] font-bold px-8 py-6 text-lg">
-              ENROLL FOR TRIAL SESSION!
-            </Button>
+          {/* Content */}
+          <div className="container relative z-10 mx-auto flex h-[90vh] flex-col items-center justify-center px-4">
+            <div className="max-w-5xl text-center">
+              {/* Subtitle */}
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-4 py-2 backdrop-blur-sm">
+                <span className="h-2 w-2 rounded-full bg-[#f39318] animate-pulse"></span>
+                <span className="text-sm font-medium text-white">Welcome to The Life Sports Academy</span>
+              </div>
+
+              {/* Main Title */}
+              <h1 className="mb-6 text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
+                <span className="block mb-2 drop-shadow-lg">Invest One Hour a Day</span>
+                <span className="bg-gradient-to-r from-[#f39318] via-yellow-400 to-[#f39318] bg-clip-text text-transparent drop-shadow-lg">
+                  Transform Your Life
+                </span>
+              </h1>
+
+              {/* Description */}
+              <p className="mb-8 max-w-2xl mx-auto text-lg text-white md:text-xl drop-shadow-md">
+                Join our premier sports facility and experience immediate results with long-term benefits for you and your family.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button className="group relative overflow-hidden bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white font-bold px-8 py-6 text-lg min-w-[200px] transition-all duration-300 hover:scale-105 shadow-lg">
+                  <span className="relative z-10">Start Free Trial</span>
+                </Button>
+                <Button  className="relative overflow-hidden  bg-gradient-to-l from-[#f39318] to-[#FF5500] backdrop-blur-sm text-white font-bold px-3 py-6 text-lg min-w-[200px] transition-all duration-300 hover:scale-105 hover:text-white shadow-lg">
+                  Explore Programs
+                  <ChevronRight className=" h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80">
+            <div className="animate-bounce">
+              <ChevronDown className="h-6 w-6" />
+            </div>
+            <span className="text-sm font-medium">Scroll to explore</span>
           </div>
         </section>
 
@@ -108,13 +165,12 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center">
               <div className="text-center max-w-3xl mx-auto mb-4">
-              <div className="inline-flex items-center justify-center">
-                <div className="h-px w-8 bg-[#800020]"></div>
-                <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#800020]">Activities</span>
-                <div className="h-px w-8 bg-[#800020]"></div>
+                <div className="inline-flex items-center justify-center">
+                  <div className="h-px w-8 bg-[#f39318]"></div>
+                  <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#f39318]">Activities</span>
+                  <div className="h-px w-8 bg-[#f39318]"></div>
+                </div>
               </div>
-
-            </div>
               <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">TOP SPORTS COACHING IN PUNE</h2>
             </div>
 
@@ -164,11 +220,11 @@ export default function HomePage() {
                     </div>
                   </CardHeader>
                   <CardContent className="p-6 py-3 sm:h-2/5 ">
-                    <h3 className="text-xl font-bold text-[#800020]">{activity.title}</h3>
+                    <h3 className="text-xl font-bold text-orange-600">{activity.title}</h3>
                     <p className="mt-2 text-gray-600">{activity.description}</p>
                   </CardContent>
                   <CardFooter className="p-6 pt-0 flex gap-4 mt-auto">
-                    <Button className="flex-1 bg-[#800020] hover:bg-[#800020]/90 text-white">
+                    <Button className="flex-1 bg-orange-500 hover:bg-orange-600 text-white">
                       Enquire Now
                     </Button>
                     <Button variant="outline" className="flex-1 hover:bg-yellow-500 hover:text-white">
@@ -195,18 +251,17 @@ export default function HomePage() {
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-4">
               <div className="inline-flex items-center justify-center">
-                <div className="h-px w-8 bg-[#800020]"></div>
-                <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#800020]">About Us</span>
-                <div className="h-px w-8 bg-[#800020]"></div>
+                <div className="h-px w-8 bg-[#f39318]"></div>
+                <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#f39318]">About Us</span>
+                <div className="h-px w-8 bg-[#f39318]"></div>
               </div>
-
             </div>
 
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
               {/* Left Content */}
               <div className="flex-1 max-w-2xl">
                 <div className="inline-block">
-                  <span className="text-sm uppercase tracking-wider font-semibold bg-gradient-to-r from-[#800020] to-red-600 bg-clip-text text-transparent">
+                  <span className="text-sm uppercase tracking-wider font-semibold bg-gradient-to-r from-[#f39318] to-yellow-500 bg-clip-text text-transparent">
                     Discover Our Legacy
                   </span>
                 </div>
@@ -214,8 +269,8 @@ export default function HomePage() {
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6 leading-tight">
                   Pune's Premier
                   <span className="relative inline-block px-2">
-                    <span className="relative z-10 bg-gradient-to-r from-[#800020] to-red-600 bg-clip-text text-transparent">Sports Academy</span>
-                    <div className="absolute bottom-2 left-0 w-full h-3 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 -rotate-2"></div>
+                    <span className="relative z-10 bg-gradient-to-r from-[#f39318] to-yellow-500 bg-clip-text text-transparent">Sports Academy</span>
+                    <div className="absolute bottom-2 left-0 w-full h-3 bg-gradient-to-r from-yellow-500/30 to-[#f39318]/30 -rotate-2"></div>
                   </span>
                 </h2>
 
@@ -264,7 +319,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Decorative Elements */}
-                <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-full blur-2xl"></div>
+                <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-yellow-500/20 to-[#f39318]/20 rounded-full blur-2xl"></div>
                 <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-gradient-to-br from-[#800020]/20 to-red-600/20 rounded-full blur-2xl"></div>
               </div>
             </div>
@@ -279,10 +334,16 @@ export default function HomePage() {
 
       {/* Floating Buttons */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
-        <Button className="h-14 w-14 rounded-full bg-[#800020] p-0 shadow-lg hover:bg-[#800020]/90">
+        <Button 
+          onClick={scrollToTop}
+          className={cn(
+            "h-14 w-14 rounded-full bg-[#f39318] p-0 shadow-lg hover:bg-[#f39318]/90 transition-all duration-300",
+            showScrollTop ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+          )}
+        >
           <ArrowUp className="h-6 w-6" />
         </Button>
-        <Button className="h-14 w-14 rounded-full bg-[#800020] p-0 shadow-lg hover:bg-[#800020]/90">
+        <Button className="h-14 w-14 rounded-full bg-[#f39318] p-0 shadow-lg hover:bg-[#f39318]/90">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

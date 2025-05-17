@@ -37,9 +37,9 @@ export function CorporateEventsSection() {
 
           <div className="text-center max-w-3xl mx-auto mb-4">
               <div className="inline-flex items-center justify-center">
-                <div className="h-px w-8 bg-[#800020]"></div>
-                <span className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#800020]">Corporate Events</span>
-                <div className="h-px w-8 bg-[#800020]"></div>
+                <div className="h-px w-8 bg-gradient-to-r from-[#f39318] to-[#FF5500]"></div>
+                <span className="mx-4 text-3xl uppercase tracking-wider font-semibold bg-gradient-to-r from-[#f39318] to-[#FF5500] bg-clip-text text-transparent">Corporate Events</span>
+                <div className="h-px w-8 bg-gradient-to-r from-[#FF5500] to-[#f39318]"></div>
               </div>
               
             </div>
@@ -53,10 +53,10 @@ export function CorporateEventsSection() {
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
-              <Card key={index} className="text-center hover:shadow-xl transition-shadow">
+              <Card key={index} className="text-center hover:shadow-xl transition-shadow duration-300 hover:scale-105">
                 <CardContent className="pt-6">
-                  <div className="rounded-full bg-[#800020]/10 p-3 w-12 h-12 mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-[#800020]" />
+                  <div className="rounded-full bg-gradient-to-r from-[#f39318]/10 to-[#FF5500]/10 p-3 w-12 h-12 mx-auto mb-4">
+                    <Icon className="w-6 h-6 text-[#f39318]" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-gray-600">{feature.description}</p>
@@ -67,13 +67,14 @@ export function CorporateEventsSection() {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
-          <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden">
+          <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">
             <Image
               src="https://www.thelifesports.in/wp-content/uploads/2020/02/best-football-club-in-pune-1.jpg"
               alt="Corporate Events"
               fill
-              className="object-cover"
+              className="object-cover hover:scale-105 transition-transform duration-700"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
           <div className="flex flex-col justify-center">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -81,32 +82,32 @@ export function CorporateEventsSection() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <div className="rounded-full bg-[#800020]/10 p-1 mt-1">
-                  <svg className="w-4 h-4 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="rounded-full bg-gradient-to-r from-[#f39318]/10 to-[#FF5500]/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-[#f39318]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <span className="text-gray-600">Professional event management and coordination</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="rounded-full bg-[#800020]/10 p-1 mt-1">
-                  <svg className="w-4 h-4 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="rounded-full bg-gradient-to-r from-[#f39318]/10 to-[#FF5500]/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-[#f39318]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <span className="text-gray-600">Multiple indoor and outdoor sports facilities</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="rounded-full bg-[#800020]/10 p-1 mt-1">
-                  <svg className="w-4 h-4 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="rounded-full bg-gradient-to-r from-[#f39318]/10 to-[#FF5500]/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-[#f39318]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <span className="text-gray-600">Customizable packages to suit your requirements</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="rounded-full bg-[#800020]/10 p-1 mt-1">
-                  <svg className="w-4 h-4 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="rounded-full bg-gradient-to-r from-[#f39318]/10 to-[#FF5500]/10 p-1 mt-1">
+                  <svg className="w-4 h-4 text-[#f39318]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -114,7 +115,7 @@ export function CorporateEventsSection() {
               </li>
             </ul>
             <div className="mt-8">
-              <Button className="bg-[#800020] hover:bg-[#800020]/90 text-white">
+              <Button className="bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-105 shadow-lg">
                 Enquire About Corporate Events
               </Button>
             </div>
