@@ -42,7 +42,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#FF5500] to-[#f39318] text-white border-t-2 border-yellow-400">
+    <footer className="bg-gradient-to-b from-[#FF5500] via-[#FF5500]/90 to-[#f39318] text-white border-t-2 border-yellow-400">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>

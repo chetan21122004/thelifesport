@@ -207,31 +207,68 @@ export default function HomePage() {
                   image: "https://www.thelifesports.in/wp-content/uploads/2020/02/WhatsApp-Image-2022-05-10-at-5.52.45-PM.jpg",
                 },
               ].map((activity, index) => (
-                <Card key={index} className="group overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                <Card key={index} className="group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl bg-white/80 backdrop-blur-sm border-0 ring-1 ring-black/5 flex flex-col">
                   <CardHeader className="p-0">
-                    <div className="relative h-48 w-full overflow-hidden">
+                    <div className="relative h-56 w-full overflow-hidden">
                       <Image
                         src={activity.image}
                         alt={activity.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                         priority={index < 3}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
+                      
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-white/90 hover:bg-white text-[#f39318] backdrop-blur-sm border-0 text-xs font-medium px-2.5 py-0.5 tracking-wide">
+                          Sports Academy
+                        </Badge>
+                      </div>
+
+                      {/* Floating Title */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#f39318] transition-colors duration-300">
+                          {activity.title}
+                        </h3>
+                      </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="p-6 py-3 sm:h-2/5">
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-[#f39318] to-[#FF5500] bg-clip-text text-transparent">{activity.title}</h3>
-                    <p className="mt-2 text-gray-600">{activity.description}</p>
-                  </CardContent>
-                  <CardFooter className="p-6 pt-0 flex gap-4 mt-auto">
-                    <Button className="flex-1 bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-105 shadow-lg">
-                      Enquire Now
-                    </Button>
-                    <Button variant="outline" className="flex-1 border-2 border-[#f39318]/30 hover:border-[#f39318] bg-white/5 backdrop-blur-sm text-gray-700 hover:bg-gradient-to-r hover:from-[#f39318] hover:to-[#FF5500] hover:text-white transition-all duration-300 hover:scale-105">
-                      Read More
-                    </Button>
-                  </CardFooter>
+                  <div className="flex flex-col flex-1">
+                    <CardContent className="p-6 flex-1">
+                      <div className="space-y-4">
+                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                          {activity.description}
+                        </p>
+                        
+                        {/* Features List */}
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <Badge variant="secondary" className="bg-[#f39318]/10 text-[#f39318] hover:bg-[#f39318]/20">
+                            Professional Coaching
+                          </Badge>
+                          <Badge variant="secondary" className="bg-[#f39318]/10 text-[#f39318] hover:bg-[#f39318]/20">
+                            All Age Groups
+                          </Badge>
+                          <Badge variant="secondary" className="bg-[#f39318]/10 text-[#f39318] hover:bg-[#f39318]/20">
+                            Modern Facilities
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                    <CardFooter className="p-6 pt-0 flex gap-3 mt-auto border-t border-gray-100">
+                      <Button 
+                        className="flex-1 bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-[1.02] shadow-lg font-medium"
+                      >
+                        Enquire Now
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        className="flex-[0.6] border border-[#f39318]/30 hover:border-[#f39318] hover:bg-gradient-to-r hover:from-[#f39318] hover:to-[#FF5500] hover:text-white transition-all duration-300 hover:scale-[1.02] font-medium"
+                      >
+                        Details
+                      </Button>
+                    </CardFooter>
+                  </div>
                 </Card>
               ))}
             </div>
