@@ -81,7 +81,7 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
             <div className="flex -ml-4">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="flex-[0_0_100%] min-w-0 pl-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
-                  <Card className="relative overflow-hidden group transition-all duration-500 h-full bg-[#800000]/70 backdrop-blur-md border-2 border-white/20 hover:border-yellow-400">
+                  <Card className="relative overflow-hidden group transition-all duration-500 h-full bg-red-600 border-2 border-white/20 hover:border-yellow-400">
                     <CardContent className="p-6 flex flex-col h-full">
                       {/* Quote Icon with Background */}
                       <div className="absolute -right-2 -top-6 w-14 mt-3 h-14 bg-yellow-400/20 rounded-full flex items-center justify-center transform rotate-12 group-hover:scale-110 transition-transform duration-500">
