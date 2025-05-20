@@ -99,8 +99,7 @@ export function Navbar() {
             >
               <button 
                 className={cn(
-                  "flex items-center text-sm font-medium transition-colors group-hover:text-[#f39318]",
-                  isScrolled ? "text-gray-700" : "text-white"
+                  "flex items-center text-sm font-medium transition-colors text-white"
                 )}
               >
                 Activities <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
@@ -158,8 +157,7 @@ export function Navbar() {
                 key={item}
                 href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-[#f39318]",
-                  isScrolled ? "text-gray-700" : "text-white"
+                  "text-sm font-medium transition-colors text-white"
                 )}
               >
                 {item}
@@ -170,8 +168,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Button 
               className={cn(
-                "hidden md:flex bg-[#f39318] hover:bg-[#f39318]/90 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105",
-                isScrolled && "bg-[#f39318] text-white"
+                "hidden md:flex bg-yellow-400 hover:bg-yellow-400/90 text-white font-bold shadow-lg transition-all duration-300 hover:scale-105"
               )}
             >
               Book My Court
@@ -250,7 +247,7 @@ export function Navbar() {
                 {item}
               </Link>
             ))}
-            <Button className="w-full bg-[#f39318] hover:bg-[#f39318]/90 text-white font-bold">
+            <Button className="w-full bg-yellow-400 hover:bg-[#f39318]/90 text-white font-bold">
               Book My Court
             </Button>
           </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Environment, Float, PresentationControls } from '@react-three/drei';
+import { Environment, Float} from '@react-three/drei';
 import { ShuttlecockModel } from './ShuttlecockModel';
 import Image from 'next/image';
 import gsap from 'gsap';
