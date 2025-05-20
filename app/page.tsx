@@ -25,6 +25,7 @@ import { CorporateEventsSection } from "@/components/corporate-events-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { Hero3DScene } from "@/components/Hero3DScene"
 import { cn } from "@/lib/utils"
 
 function CountUpAnimation({ end, duration = 2000, label }: { end: number, duration?: number, label: string }) {
@@ -115,6 +116,9 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          
+          {/* 3D Shuttlecock Model */}
+          <Hero3DScene />
 
           {/* Content */}
           <div className="container relative z-10 mx-auto flex h-[90vh] flex-col items-center justify-center px-4">

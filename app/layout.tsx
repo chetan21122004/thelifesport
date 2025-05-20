@@ -4,8 +4,6 @@ import { Preloader } from "@/components/preloader"
 import { useState, useEffect } from "react"
 import "./globals.css"
 
-
-
 export default function RootLayout({
   children,
 }: {
@@ -13,22 +11,28 @@ export default function RootLayout({
 }) {
   const [isLoading, setIsLoading] = useState(true);
 
+  // Simply show preloader for 3 seconds
   useEffect(() => {
-    // Prevent scrolling while preloader is active
-    if (isLoading) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isLoading]);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
+  // Both content and preloader are always rendered, but with different visibility
   return (
     <html lang="en">
-      <body className={isLoading ? 'overflow-hidden' : ''}>
-        <Preloader onLoadingComplete={() => setIsLoading(false)} />
-        <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}>
+      <body>
+        {/* Always render children, but hide when loading */}
+        <div style={{ display: isLoading ? 'none' : 'block' }}>
           {children}
         </div>
+        
+        {/* Preloader with conditional rendering */}
+        {isLoading && (
+          <Preloader onLoadingComplete={() => setIsLoading(false)} />
+        )}
       </body>
     </html>
   )
