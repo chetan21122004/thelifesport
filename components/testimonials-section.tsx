@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import useEmblaCarousel from "embla-carousel-react"
 import AutoPlay from "embla-carousel-autoplay"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 
 const testimonials = [
   {
@@ -40,6 +42,24 @@ const autoplayOptions = {
   rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement,
 }
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+}
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { duration: 0.8 }
+  }
+}
+
 export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
@@ -47,7 +67,7 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
       align: "center",
       skipSnaps: false,
     },
-    [AutoPlay(autoplayOptions)]
+    [AutoPlay(autoplayOptions) as any]
   )
 
   const scrollPrev = useCallback(() => {
@@ -58,10 +78,22 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
     if (emblaApi) emblaApi.scrollNext()
   }, [emblaApi])
 
+  // Animation refs
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+
   return (
-    <section className="py-16 bg-gradient-to-r from-[#FF5500] to-[#f39318] overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="py-16 bg-gradient-to-r from-[#FF5500] to-[#f39318] overflow-hidden"
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeInUp}
+        >
           <h2 className="relative inline-block text-3xl font-bold text-white md:text-5xl mb-2">
             <span className="relative z-10">Our Champions' Voice</span>
             <div className="absolute -bottom-3 mt-1 left-0 w-full h-3 bg-yellow-500/30 transform -skew-x-12"></div>
@@ -69,9 +101,15 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
           <p className="mt-6 max-w-2xl mx-auto text-white/80 text-lg">
             Join the community of satisfied members at one of Pune's premier sports facilities
           </p>
-        </div>
+        </motion.div>
 
-        <div className="relative w-full px-12">
+        <motion.div 
+          className="relative w-full px-12"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeIn}
+          transition={{ delay: 0.3 }}
+        >
           <div className="absolute inset-0 flex items-center justify-between z-10 pointer-events-none">
             <div className="sm:w-44 w-16 h-full bg-gradient-to-r from-[#FF5500] to-transparent"></div>
             <div className="sm:w-44 w-16 h-full bg-gradient-to-l from-[#f39318] to-transparent"></div>
@@ -80,13 +118,22 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex -ml-4">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="flex-[0_0_100%] min-w-0 pl-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
+                <motion.div 
+                  key={index} 
+                  className="flex-[0_0_100%] min-w-0 pl-4 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <Card className="relative overflow-hidden group transition-all duration-500 h-full bg-red-600 border-2 border-white/20 hover:border-yellow-400">
                     <CardContent className="p-6 flex flex-col h-full">
                       {/* Quote Icon with Background */}
-                      <div className="absolute -right-2 -top-6 w-14 mt-3 h-14 bg-yellow-400/20 rounded-full flex items-center justify-center transform rotate-12 group-hover:scale-110 transition-transform duration-500">
+                      <motion.div 
+                        className="absolute -right-2 -top-6 w-14 mt-3 h-14 bg-yellow-400/20 rounded-full flex items-center justify-center transform rotate-12 group-hover:scale-110 transition-transform duration-500"
+                        animate={{ rotate: [12, 0, 12] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                      >
                         <Quote className="h-8 w-8 text-[#800000] transform -rotate-12" />
-                      </div>
+                      </motion.div>
 
                       {/* Main Content */}
                       <div className="flex-1">
@@ -98,11 +145,14 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
                       {/* Author Section */}
                       <div className="flex items-center gap-4 pt-4 border-t border-white/10">
                         <div className="relative">
-                          <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#FF5500] to-[#f39318] flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12">
+                          <motion.div 
+                            className="h-12 w-12 rounded-full bg-gradient-to-br from-[#FF5500] to-[#f39318] flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
+                            whileHover={{ scale: 1.2, rotate: 12 }}
+                          >
                             <span className="text-white font-bold text-lg">
                               {testimonial.name.charAt(0)}
                             </span>
-                          </div>
+                          </motion.div>
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400 to-[#f39318] rounded-full blur opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
                         </div>
                         <div>
@@ -114,29 +164,33 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
           
           {/* Navigation Buttons */}
-          <button 
+          <motion.button 
             onClick={scrollPrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:flex h-12 w-12 items-center justify-center rounded-full bg-white/10 hover:bg-yellow-400/20 border-2 border-white/20 hover:border-yellow-400 z-20 text-white transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+            whileHover={{ scale: 1.1, x: -3 }}
+            whileTap={{ scale: 0.95 }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m15 18-6-6 6-6"/>
             </svg>
-          </button>
-          <button 
+          </motion.button>
+          <motion.button 
             onClick={scrollNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex h-12 w-12 items-center justify-center rounded-full bg-white/10 hover:bg-yellow-400/20 border-2 border-white/20 hover:border-yellow-400 z-20 text-white transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+            whileHover={{ scale: 1.1, x: 3 }}
+            whileTap={{ scale: 0.95 }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m9 18 6-6-6-6"/>
             </svg>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   )

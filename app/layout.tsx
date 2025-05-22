@@ -1,6 +1,8 @@
 "use client"
 
 import { Preloader } from "@/components/preloader"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 import { useState, useEffect } from "react"
 import "./globals.css"
 
@@ -23,16 +25,20 @@ export default function RootLayout({
   // Both content and preloader are always rendered, but with different visibility
   return (
     <html lang="en">
-      <body>
+      <body className="flex min-h-screen flex-col">
         {/* Always render children, but hide when loading */}
-        <div style={{ display: isLoading ? 'none' : 'block' }}>
-          {children}
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
         </div>
         
-        {/* Preloader with conditional rendering */}
+        {/* Preloader with conditional rendering
         {isLoading && (
           <Preloader onLoadingComplete={() => setIsLoading(false)} />
-        )}
+        )} */}
       </body>
     </html>
   )
