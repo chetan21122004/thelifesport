@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -196,9 +197,11 @@ export function CorporateEventsSection() {
               variants={fadeInUp}
               whileHover={{ scale: 1.05 }}
             >
-              <Button className="bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-105 shadow-lg px-8 py-6 text-base md:text-lg rounded-xl">
-                Enquire About Corporate Events
-              </Button>
+              <Link href="/contact">
+                <Button className="bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-105 shadow-lg px-8 py-6 text-base md:text-lg rounded-xl">
+                  Enquire About Corporate Events
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.div>

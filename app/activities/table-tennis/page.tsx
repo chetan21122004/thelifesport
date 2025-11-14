@@ -155,7 +155,7 @@ const TableTennisPage = () => {
               <div className="space-y-3 sm:space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
                   <span className="block text-white mb-2">Book Your Table Tennis Court</span>
-                  
+
                 </h1>
                 <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-full"></div>
               </div>
@@ -183,9 +183,9 @@ const TableTennisPage = () => {
 
               {/* Professional CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4 pt-2 sm:pt-4">
-                <a 
-                  href="https://booking.thelifesports.in/bookings" 
-                  target="_blank" 
+                <a
+                  href="https://booking.thelifesports.in/bookings"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto"
                 >
@@ -288,7 +288,7 @@ const TableTennisPage = () => {
           </div>
         </div>
 
-       
+
       </div>
 
       {/* Image Gallery */}
@@ -357,7 +357,7 @@ const TableTennisPage = () => {
         </div>
       </section>
 
-  
+
 
       {/* Booking Features with Images */}
       <section id="booking" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-orange-50 to-red-50">
@@ -460,9 +460,9 @@ const TableTennisPage = () => {
               transition={{ delay: 0.4 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4"
             >
-              <a 
-                href="https://booking.thelifesports.in/bookings" 
-                target="_blank" 
+              <a
+                href="https://booking.thelifesports.in/bookings"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
               >
@@ -563,7 +563,7 @@ const TableTennisPage = () => {
                       <span className="text-sm sm:text-base font-semibold text-gray-900">Monday to Sunday</span>
                       <span className="text-sm sm:text-base text-[#f39318] font-bold">6:00 AM - 11:55 PM</span>
                     </div>
-                    
+
                     <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm">
                       <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Booking Features:</h4>
                       <ul className="space-y-2 text-sm sm:text-base text-gray-600">
@@ -589,7 +589,7 @@ const TableTennisPage = () => {
                           <svg className="w-4 h-4 text-[#f39318]" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
-                          Flexible cancellation policy
+                          Easy Booking & Flexible Timings
                         </li>
                       </ul>
                     </div>
@@ -607,9 +607,9 @@ const TableTennisPage = () => {
               </div>
 
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <a 
-                  href="https://booking.thelifesports.in/bookings" 
-                  target="_blank" 
+                <a
+                  href="https://booking.thelifesports.in/bookings"
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   <button className="w-full sm:w-auto bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:from-[#e8840f] hover:to-[#e54d00] text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
@@ -630,7 +630,7 @@ const TableTennisPage = () => {
         </div>
       </section>
 
-    
+
 
       {/* Image Modal */}
       <AnimatePresence>
