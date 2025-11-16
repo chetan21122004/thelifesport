@@ -5,6 +5,33 @@ import { X, ZoomIn } from "lucide-react"
 
 const images = [
   {
+    src: "/images/badminton_plyr1.jpg",
+    alt: "Badminton Player",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/badminton_plyr2.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/badminton_plyr3.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/gymnastics2.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/badminton_plyr4.jpg",
+    alt: "The Life Sports Administration",
+    width: 800,
+    height: 533,
+  },
+  {
     src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img17-.jpg",
     alt: "The Life Sports Administration",
     width: 800,
@@ -47,14 +74,9 @@ const images = [
     width: 400,
     height: 538,
   }, 
+ 
   {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img10-.jpg",
-    alt: "Rope skills training",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img12-.jpg",
+    src: "/images/office-1.jpg",
     alt: "The life Sports office",
     width: 800,
     height: 533,
@@ -77,12 +99,7 @@ const images = [
     width: 626,
     height: 417,
   },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img1-1.jpg",
-    alt: "Fitness training session",
-    width: 626,
-    height: 417,
-  },
+  
   {
     src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img1.jpg",
     alt: "Girl doing yoga pose",

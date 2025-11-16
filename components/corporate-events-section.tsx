@@ -5,9 +5,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Building2, Users2, Trophy, Target } from "lucide-react"
+import { Building2, Users2, Trophy, Target, X } from "lucide-react"
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useInView } from "framer-motion"
 
 const features = [
@@ -64,6 +64,52 @@ const fadeIn = {
 export function CorporateEventsSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+  const [isFormOpen, setIsFormOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    age: "",
+    sport: "",
+    batchTime: "",
+    date: "",
+    day: ""
+  })
+
+  const handleInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, [field]: e.target.value }))
+  }
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    // WhatsApp number from contact page
+    const whatsappNumber = "919767755977"
+    const message = `Corporate Event Enquiry:%0A
+Name: ${formData.name}%0A
+Contact: ${formData.contact}%0A
+Age: ${formData.age}%0A
+Sport: ${formData.sport}%0A
+Preferred Time: ${formData.batchTime}%0A
+Date: ${formData.date}%0A
+Day: ${formData.day}`
+
+    const url = `https://wa.me/${whatsappNumber}?text=${message}`
+    // open in new tab
+    window.open(url, "_blank", "noopener,noreferrer")
+    setIsSubmitting(false)
+    setIsFormOpen(false)
+    // reset
+    setFormData({
+      name: "",
+      contact: "",
+      age: "",
+      sport: "",
+      batchTime: "",
+      date: "",
+      day: ""
+    })
+  }
   
   return (
     <section ref={sectionRef} className="py-12 pt-6 bg-gradient-to-b from-white to-gray-50">
@@ -197,15 +243,130 @@ export function CorporateEventsSection() {
               variants={fadeInUp}
               whileHover={{ scale: 1.05 }}
             >
-              <Link href="/contact">
-                <Button className="bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-105 shadow-lg px-8 py-6 text-base md:text-lg rounded-xl">
-                  Enquire About Corporate Events
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => setIsFormOpen(true)}
+                className="bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:opacity-90 text-white transition-all duration-300 hover:scale-105 shadow-lg px-8 py-6 text-base md:text-lg rounded-xl"
+              >
+                Enquire About Corporate Events
+              </Button>
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Modal */}
+      {isFormOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/60"
+            onClick={() => !isSubmitting && setIsFormOpen(false)}
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="relative z-[61] w-full max-w-2xl rounded-2xl bg-white shadow-2xl overflow-hidden"
+          >
+            <div className="flex items-center justify-between px-6 py-4 border-b">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900">Corporate Event Enquiry</h3>
+              <button
+                onClick={() => !isSubmitting && setIsFormOpen(false)}
+                className="p-2 rounded-full hover:bg-gray-100 transition"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
+
+            <div className="px-6 py-5">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <label className="flex flex-col text-sm font-medium text-gray-700">
+                    Name
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={handleInputChange("name")}
+                      required
+                      className="mt-2 rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-[#f39318] focus:outline-none focus:ring-2 focus:ring-[#f39318]/30"
+                    />
+                  </label>
+                  <label className="flex flex-col text-sm font-medium text-gray-700">
+                    Contact Number
+                    <input
+                      type="tel"
+                      value={formData.contact}
+                      onChange={handleInputChange("contact")}
+                      required
+                      className="mt-2 rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-[#f39318] focus:outline-none focus:ring-2 focus:ring-[#f39318]/30"
+                    />
+                  </label>
+                  <label className="flex flex-col text-sm font-medium text-gray-700">
+                    Age
+                    <input
+                      type="number"
+                      min="1"
+                      value={formData.age}
+                      onChange={handleInputChange("age")}
+                      required
+                      className="mt-2 rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-[#f39318] focus:outline-none focus:ring-2 focus:ring-[#f39318]/30"
+                    />
+                  </label>
+                  <label className="flex flex-col text-sm font-medium text-gray-700">
+                    Sports
+                    <input
+                      type="text"
+                      value={formData.sport}
+                      onChange={handleInputChange("sport")}
+                      required
+                      className="mt-2 rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-[#f39318] focus:outline-none focus:ring-2 focus:ring-[#f39318]/30"
+                    />
+                  </label>
+                  <label className="flex flex-col text-sm font-medium text-gray-700">
+                    Preferred Batch Time
+                    <input
+                      type="text"
+                      value={formData.batchTime}
+                      onChange={handleInputChange("batchTime")}
+                      required
+                      className="mt-2 rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-[#f39318] focus:outline-none focus:ring-2 focus:ring-[#f39318]/30"
+                    />
+                  </label>
+                  <label className="flex flex-col text-sm font-medium text-gray-700">
+                    Date
+                    <input
+                      type="date"
+                      value={formData.date}
+                      onChange={handleInputChange("date")}
+                      required
+                      className="mt-2 rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-[#f39318] focus:outline-none focus:ring-2 focus:ring-[#f39318]/30"
+                    />
+                  </label>
+                  <label className="flex flex-col text-sm font-medium text-gray-700 md:col-span-2">
+                    Day
+                    <input
+                      type="text"
+                      value={formData.day}
+                      onChange={handleInputChange("day")}
+                      required
+                      className="mt-2 rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-[#f39318] focus:outline-none focus:ring-2 focus:ring-[#f39318]/30"
+                    />
+                  </label>
+                </div>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full rounded-lg bg-gradient-to-r from-[#f39318] to-[#FF5500] px-4 py-3 text-sm font-semibold text-white shadow-md transition hover:from-[#e8840f] hover:to-[#e54d00] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit & Send on WhatsApp"}
+                </Button>
+                <p className="text-xs text-gray-500 text-center">
+                  Your details will open in WhatsApp to send directly to our team.
+                </p>
+              </form>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   )
 } 

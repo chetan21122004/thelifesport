@@ -244,7 +244,7 @@ export default function PickleBallPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gray-800 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-[#f39318] mb-1">20x44</div>
+                  <div className="text-2xl font-bold text-[#f39318] mb-1">30x60</div>
                   <div className="text-sm text-gray-400">Court Size (ft)</div>
                 </div>
                 <div className="bg-gray-800 p-4 rounded-lg">

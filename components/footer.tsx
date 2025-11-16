@@ -37,7 +37,7 @@ const socialLinks = [
   { icon: Twitter, href: "https://twitter.com/thelifesports", name: "Twitter", color: "hover:bg-sky-500" },
   {
     icon: Instagram,
-    href: "https://instagram.com/thelifesportsacademy",
+    href: "https://www.instagram.com/thelifesportss",
     name: "Instagram",
     color: "hover:bg-pink-600",
   },

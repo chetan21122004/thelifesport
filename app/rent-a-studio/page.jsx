@@ -732,7 +732,7 @@ export default function RentAStudio() {
                     {
                       icon: <PhoneIcon className="h-6 w-6" />,
                       title: "Contact",
-                      info: "+91 98765 43210"
+                      info: "+91 9922804730 "
                     },
                     {
                       icon: <MailIcon className="h-6 w-6" />,

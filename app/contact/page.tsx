@@ -210,7 +210,7 @@ export default function ContactPage() {
             </div>
 
             <img
-              src="/images/dance-1.jpg"
+              src="/images/gymnastics2.jpg"
               alt="Sports coaching and training"
               className="w-full h-64 object-cover rounded-lg shadow-md"
             />
