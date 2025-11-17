@@ -194,7 +194,7 @@ export default function GymnasticsPage() {
                   },
                   {
                     icon: FaChild,
-                    title: "All Ages Welcome",
+                    title: "Comprehensive Training for kids upto 14age",
                     description: "Programs from toddlers to competitive athletes",
                   },
                   {

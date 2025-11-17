@@ -26,7 +26,7 @@ import {
 export default function MiniProTurfPage() {
   return (
     <div className="min-h-screen bg-background">
-  
+
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -57,7 +57,7 @@ export default function MiniProTurfPage() {
               </h1>
 
               <p className="text-xl text-gray-200 leading-relaxed max-w-lg">
-                Play on premium synthetic turf designed for multiple sports. Weather-resistant, 
+                Play on premium synthetic turf designed for multiple sports. Weather-resistant,
                 professional-grade surface perfect for football, cricket, and various outdoor activities.
               </p>
 
@@ -69,14 +69,16 @@ export default function MiniProTurfPage() {
                   <Play className="w-5 h-5 mr-2" />
                   Book Your Session
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-6 border-white hover:bg-white text-gray-900"
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
-                </Button>
+                <Link href="/contact">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-lg px-8 py-6 border-white hover:bg-white text-gray-900"
+                  >
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call Now
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex items-center space-x-8 pt-4">
@@ -230,8 +232,8 @@ export default function MiniProTurfPage() {
             <div className="space-y-6">
               <h3 className="text-3xl font-bold">Multi-Sport Excellence</h3>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Our mini pro turf features a premium synthetic surface that provides consistent 
-                ball bounce, excellent traction, and optimal playing conditions for various sports. 
+                Our mini pro turf features a premium synthetic surface that provides consistent
+                ball bounce, excellent traction, and optimal playing conditions for various sports.
                 The surface is designed to meet professional standards while ensuring player safety.
               </p>
 
@@ -515,9 +517,9 @@ export default function MiniProTurfPage() {
             Experience the difference of professional-grade synthetic turf. Book your session today!
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a 
-              href="https://booking.thelifesports.in/bookings" 
-              target="_blank" 
+            <a
+              href="https://booking.thelifesports.in/bookings"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <Button
@@ -545,7 +547,7 @@ export default function MiniProTurfPage() {
         </div>
       </section>
 
-      
+
     </div>
   )
 }
