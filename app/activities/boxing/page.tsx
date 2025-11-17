@@ -70,14 +70,16 @@ export default function BoxingPage() {
                   <Play className="w-5 h-5 mr-2" />
                   Start Training Today
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-6 border-white hover:bg-white text-gray-900"
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
-                </Button>
+                <Link href="/contact">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-lg px-8 py-6 border-white hover:bg-white text-gray-900"
+                  >
+                    <Phone className="w-5 h-5 mr-2" />
+                    Contact us for more details
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex items-center space-x-8 pt-4">
