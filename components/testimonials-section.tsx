@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useCallback } from "react"
-import { Quote } from "lucide-react"
+import { Quote, Star } from "lucide-react"
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -14,23 +15,32 @@ const testimonials = [
   {
     name: "Parvez",
     text: "The Life Sports is a very vibrant and active place with a friendly atmosphere. And it was great knowing Mr. Ganesh Nimhan The Founder of The Life Sports. His Dedication towards Sports and Health for the society is a very commendable factor.",
+    rating: 5,
+    photo: "/images/testimonial1.jpg",
   },
- 
   {
     name: "Arvind Yadav",
     text: "This place is equivalent to mental peace. After home, I feel this is the place for me to find the peace I want. Love the Badminton Court…!",
+    rating: 5,
+    photo: "/images/testimonial2.jpg",
   },
   {
     name: "Sachin Sahasrabudhe",
     text: "Total 4 Badminton Courts, water, Change Room and Booking facility available, You have nice collection of books as well at booking Counter. Flooring Average, Light adequate.",
+    rating: 4.5,
+    photo: "/images/testimonial3.jpg",
   },
   {
     name: "Abhishek Dhadse",
     text: "The maintenance of these grounds are done in a perfect way. Badminton courts are ventilated properly and are ensured to be clean. You cannot wear outside shoes, so you have to carry badminton shoes separately. Parking is good if you're coming in two-wheelers. But for four-wheelers, it's not.",
+    rating: 4,
+    photo: "/images/testimonial4.jpg",
   },
   {
     name: "Komal Khond",
     text: "It's a wonderful sports academy. Badminton court and their coaches are really very good.",
+    rating: 5,
+    photo: "/placeholder-user.jpg",
   },
 ]
 
@@ -91,11 +101,28 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
         >
-          <h2 className="relative inline-block text-3xl font-bold text-white md:text-5xl mb-2">
+          <h2 className="relative inline-block text-3xl font-bold text-white md:text-5xl mb-4">
             <span className="relative z-10">Our Champions' Voice</span>
             <div className="absolute -bottom-3 mt-1 left-0 w-full h-3 bg-yellow-500/30 transform -skew-x-12"></div>
           </h2>
-          <p className="mt-6 max-w-2xl mx-auto text-white/80 text-lg">
+          
+          {/* Google Rating Badge */}
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="text-white font-bold text-lg">4.8</span>
+            <span className="text-white/80 text-sm">Google Rating</span>
+          </motion.div>
+
+          <p className="mt-4 max-w-2xl mx-auto text-white/80 text-lg">
             Join the community of satisfied members at one of Pune's premier sports facilities
           </p>
         </motion.div>
@@ -139,24 +166,64 @@ export function TestimonialsSection({ maxItems = 4 }: { maxItems?: number }) {
                         </p>
                       </div>
 
+                      {/* Star Rating */}
+                      <div className="flex items-center gap-1 mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-4 h-4 ${
+                              i < Math.floor(testimonial.rating || 5)
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "fill-gray-600 text-gray-600"
+                            }`}
+                          />
+                        ))}
+                        <span className="ml-2 text-white/80 text-sm font-medium">
+                          {testimonial.rating || 5}.0
+                        </span>
+                      </div>
+
                       {/* Author Section */}
                       <div className="flex items-center gap-4 pt-4 border-t border-white/10">
                         <div className="relative">
                           <motion.div 
-                            className="h-12 w-12 rounded-full bg-gradient-to-br from-[#FF5500] to-[#f39318] flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
+                            className="h-12 w-12 rounded-full overflow-hidden bg-gradient-to-br from-[#FF5500] to-[#f39318] flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 ring-2 ring-white/20"
                             whileHover={{ scale: 1.2, rotate: 12 }}
                           >
-                            <span className="text-white font-bold text-lg">
-                              {testimonial.name.charAt(0)}
-                            </span>
+                            {testimonial.photo ? (
+                              <Image
+                                src={testimonial.photo}
+                                alt={testimonial.name}
+                                width={48}
+                                height={48}
+                                className="object-cover w-full h-full"
+                                onError={(e) => {
+                                  // Fallback to initial if image fails
+                                  const target = e.target as HTMLImageElement
+                                  target.style.display = 'none'
+                                  const parent = target.parentElement
+                                  if (parent) {
+                                    parent.innerHTML = `<span class="text-white font-bold text-lg">${testimonial.name.charAt(0)}</span>`
+                                  }
+                                }}
+                              />
+                            ) : (
+                              <span className="text-white font-bold text-lg">
+                                {testimonial.name.charAt(0)}
+                              </span>
+                            )}
                           </motion.div>
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400 to-[#f39318] rounded-full blur opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <h3 className="font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">
                             {testimonial.name}
                           </h3>
-                          <p className="text-white/60 text-sm">Verified Member</p>
+                          <div className="flex items-center gap-2 mt-1">
+                            <Badge className="bg-green-500/20 text-green-300 border-green-400/30 text-xs px-2 py-0">
+                              Verified Google Review
+                            </Badge>
+                          </div>
                         </div>
                       </div>
                     </CardContent>

@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import { useState } from "react"
 import { sendEmail } from "@/lib/emailService"
+import { ContactFAQsSection } from "@/components/contact-faqs-section"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -209,55 +210,46 @@ export default function ContactPage() {
               />
             </div>
 
-            <img
-              src="/images/gymnastics2.jpg"
-              alt="Sports coaching and training"
-              className="w-full h-64 object-cover rounded-lg shadow-md"
-            />
 
-            {/* Contact Information Card */}
-            <Card className="shadow-lg border-0 bg-gradient-to-br from-[#f39318] to-[#FF5500] text-white">
+     
+
+            {/* Working Hours Card */}
+            <Card className="shadow-lg border-0">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6">HEAD OFFICE ADDRESS</h3>
-
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="w-6 h-6 mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">19/1B/1, Near Hotel Green Park,</p>
-                      <p>Someshwarwadi Road,</p>
-                      <p>Someshwarwadi Pune-411008</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <Clock className="w-6 h-6 text-[#f39318]" />
+                  Working Hours
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { day: "Monday", hours: "6:00 AM - 11:00 PM" },
+                    { day: "Tuesday", hours: "6:00 AM - 11:00 PM" },
+                    { day: "Wednesday", hours: "6:00 AM - 11:00 PM" },
+                    { day: "Thursday", hours: "6:00 AM - 11:00 PM" },
+                    { day: "Friday", hours: "6:00 AM - 11:00 PM" },
+                    { day: "Saturday", hours: "6:00 AM - 11:00 PM" },
+                    { day: "Sunday", hours: "6:00 AM - 11:00 PM" },
+                  ].map((schedule, index) => (
+                    <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
+                      <span className="font-medium text-gray-900">{schedule.day}</span>
+                      <span className="text-gray-600">{schedule.hours}</span>
                     </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 flex-shrink-0" />
-                    <a href="mailto:lifesportsenquiry@gmail.com" className="hover:underline">
-                      lifesportsenquiry@gmail.com
-                    </a>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Phone className="w-6 h-6 mt-1 flex-shrink-0" />
-                    <div>
-                      <p>+91 9767755977</p>
-                      <p>+91 9922084730</p>
-                      <p>+91 9767272100</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Clock className="w-6 h-6 flex-shrink-0" />
-                    <p className="font-medium">6 AM to 11 PM</p>
-                  </div>
+                  ))}
+                </div>
+                <div className="mt-4 p-3 bg-[#f39318]/10 rounded-lg">
+                  <p className="text-sm text-gray-600">
+                    <strong>Note:</strong> We are open all days including holidays. Special timings may apply during festivals.
+                  </p>
                 </div>
               </CardContent>
             </Card>
-
            
           </div>
         </div>
       </div>
+
+      {/* FAQs Section */}
+      <ContactFAQsSection />
     </div>
   )
 }

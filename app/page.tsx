@@ -8,8 +8,8 @@ import { motion } from "framer-motion"
 import {
   ChevronRight,
   ChevronDown,
-
   ArrowUp,
+  MessageCircle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
@@ -17,6 +17,10 @@ import { Badge } from "@/components/ui/badge"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { CorporateEventsSection } from "@/components/corporate-events-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { WhyChooseUsSection } from "@/components/why-choose-us-section"
+import { FamilySportsSection } from "@/components/family-sports-section"
+import { PromotionalBannersSection } from "@/components/promotional-banners-section"
+import { MobileStickyBar } from "@/components/mobile-sticky-bar"
 
 import { Hero3DScene } from "@/components/Hero3DScene"
 
@@ -123,17 +127,19 @@ function AutoplayCarousel() {
               whileHover={{ y: -5 }}
               className="h-full"
             >
-              <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl bg-white/80 backdrop-blur-sm border-0 ring-1 ring-black/5 flex flex-col h-full">
+              <Card className="group relative overflow-hidden transition-all duration-500 hover:shadow-2xl bg-white/80 backdrop-blur-sm border-0 ring-1 ring-black/5 hover:ring-2 hover:ring-transparent hover:bg-gradient-to-br hover:from-[#f39318]/5 hover:to-[#FF5500]/5 flex flex-col h-full">
+                {/* Gradient Border on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#f39318] to-[#FF5500] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg -z-10 blur-sm"></div>
                 <CardHeader className="p-0">
                   <div className="relative h-56 w-full overflow-hidden">
                     <Image
                       src={activity.image}
                       alt={activity.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
                       priority={index < 3}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
 
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
@@ -144,7 +150,7 @@ function AutoplayCarousel() {
 
                     {/* Floating Title */}
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#f39318] transition-colors duration-300">
+                      <h3 className="text-lg md:text-xl font-extrabold text-white mb-2 group-hover:bg-gradient-to-r group-hover:from-[#f39318] group-hover:to-[#FF5500] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
                         {activity.title}
                       </h3>
                     </div>
@@ -153,7 +159,7 @@ function AutoplayCarousel() {
                 <div className="flex flex-col flex-1">
                   <CardContent className="p-6 flex-1">
                     <div className="space-y-4">
-                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-2">
                         {activity.description}
                       </p>
 
@@ -378,9 +384,26 @@ function useThrottledScrollY(delay = 50) {
 
 export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   // Use throttled scroll position instead of raw scroll events
   const scrollY = useThrottledScrollY(30);
+
+  // Hero background images for slider
+  const heroImages = [
+    "/images/hero-3.jpg",
+    "/images/hero-4.jpg",
+    "/images/hero-5.jpg",
+  ]
+
+  // Auto-advance background slider
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length)
+    }, 5000) // Change image every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [heroImages.length])
 
   // Animation hooks for different sections with proper thresholds
   const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true })
@@ -427,20 +450,58 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative min-h-[90vh] overflow-hidden ">
-          {/* Background Image and Overlay */}
+          {/* Background Video/Image and Overlay */}
           <div className="absolute inset-0">
             <div className="relative h-full w-full">
               <motion.div
                 className="absolute inset-0 will-change-transform"
                 style={{ y: calculateParallax(-0.05) }}
               >
-                <Image
-                  src="https://www.thelifesports.in/wp-content/uploads/2018/12/Life-Sports-Banner.jpg"
-                  alt="The Life Sports Facility"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                {/* Background Image Slider */}
+                {heroImages.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    className="absolute inset-0"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: index === currentImageIndex ? 1 : 0,
+                      scale: index === currentImageIndex ? 1 : 1.1,
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <Image
+                      src={image}
+                      alt={`The Life Sports Facility ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
+                      quality={90}
+                      onError={(e) => {
+                        // Fallback to first image if any image fails to load
+                        const target = e.target as HTMLImageElement
+                        if (target.src !== heroImages[0]) {
+                          target.src = heroImages[0]
+                        }
+                      }}
+                    />
+                  </motion.div>
+                ))}
+                
+                {/* Video Background - overlays images if available (optional) */}
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-1000"
+                  poster={heroImages[0]}
+                >
+                  <source src="/videos/hero-video.webm" type="video/webm" />
+                  <source src="/videos/hero-video.mp4" type="video/mp4" />
+                </video>
               </motion.div>
               <div className="absolute inset-0 bg-black/50"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
@@ -463,70 +524,133 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Slider Indicators */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className="group relative"
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                <div
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? "w-8 bg-[#f39318]"
+                      : "w-2 bg-white/40 hover:bg-white/60"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+
           {/* 3D Shuttlecock Model - no parallax for better performance */}
           <Hero3DScene />
 
           {/* Content */}
-          <div className="container relative z-10 mx-auto flex h-[90vh] flex-col items-center justify-center px-4">
+          <div className="container relative z-10 mx-auto flex h-[90vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
             <motion.div
               ref={heroRef}
-              className="max-w-5xl text-center"
+              className="max-w-6xl w-full"
               initial="hidden"
               animate={heroInView ? "visible" : "hidden"}
               variants={staggerContainer}
             >
-              {/* Subtitle */}
-              <motion.div
-                className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-4 py-2 backdrop-blur-sm"
-                variants={fadeIn}
-              >
-                <span className="h-2 w-2 rounded-full bg-[#f39318] animate-pulse"></span>
-                <span className="text-sm font-medium text-white">Welcome to The Life Sports</span>
-              </motion.div>
+              {/* Top Section: Main Content */}
+              <div className="text-center mb-12">
+                {/* Elegant Badge */}
+                <motion.div
+                  className="inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-black/20 backdrop-blur-md px-5 py-2 mb-8"
+                  variants={fadeIn}
+                >
+                 
+                  <span className="text-xs font-medium text-white/95 tracking-wider uppercase">Pune's Premier Sports Academy</span>
+                </motion.div>
 
-              {/* Main Title - simplified animation */}
-              <div className="mb-6">
-                <AnimatedText
-                  text="Invest One Hour a Day"
-                  className="mb-2 text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl drop-shadow-lg"
-                />
-                <AnimatedText
-                  text="Bas Ek Ghanta. Zindagi Badal Jaayegi."
-                  className="bg-gradient-to-r from-[#f39318] via-yellow-400 to-[#f39318] bg-clip-text text-transparent drop-shadow-lg text-2xl font-bold leading-tight md:text-3xl lg:text-4xl"
-                />
+                {/* Main Headline */}
+                <motion.div variants={fadeInUp} className="mb-6">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-4 leading-[1.1] tracking-tight drop-shadow-2xl">
+                    Invest One Hour a Day
+                  </h1>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-[#f39318] via-yellow-400 to-[#f39318] bg-clip-text text-transparent leading-tight tracking-tight">
+                    Bas Ek Ghanta. Zindagi Badal Jaayegi.
+                  </h2>
+                </motion.div>
+
+                {/* Description */}
+                <motion.p
+                  variants={fadeInUp}
+                  className="text-base md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed font-light mb-10"
+                >
+                  Join our premier sports facility and experience immediate results with long-term benefits for you and your family.
+                </motion.p>
+
+                {/* Trust Indicators - Horizontal Bar */}
+                <motion.div
+                  variants={fadeInUp}
+                  className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-10"
+                >
+                  {[
+                    { value: "20+", label: "Years Excellence" },
+                    { value: "5000+", label: "Happy Members" },
+                    { value: "6", label: "BWF Courts" }
+                  ].map((stat, index) => (
+                    <div key={index} className="text-center">
+                      <div className="text-3xl md:text-4xl font-black text-white mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs md:text-sm text-white/80 font-medium uppercase tracking-widest">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
               </div>
 
-              {/* Description */}
-              <motion.p
-                className="mb-8 max-w-2xl mx-auto text-lg text-white md:text-xl drop-shadow-md"
-                variants={fadeInUp}
-              >
-                Join our premier sports facility and experience immediate results with long-term benefits for you and your family.
-              </motion.p>
-
-              {/* CTA Buttons */}
+              {/* Bottom Section: CTA Buttons */}
               <motion.div
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                 variants={fadeInUp}
               >
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
                   <Link href="/contact">
-                    <Button className="group relative overflow-hidden bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white font-bold px-8 py-6 text-lg min-w-[200px] transition-all duration-300 shadow-lg">
+                    <Button 
+                      size="lg"
+                      className="group relative overflow-hidden bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white font-bold px-8 py-6 text-base md:text-lg min-w-[200px] md:min-w-[220px] shadow-xl hover:shadow-2xl transition-all duration-300"
+                    >
                       <motion.span
-                        className="absolute inset-0 bg-white/20"
+                        className="absolute inset-0 bg-white/25"
                         initial={{ x: "-100%" }}
                         whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.7, ease: "easeInOut" }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
                       />
-                      <span className="relative z-10">Enroll for Trial Session</span>
+                      <span className="relative z-10">Book Free Trial</span>
                     </Button>
                   </Link>
                 </motion.div>
-
+                <motion.div
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <Button
+                    onClick={() => {
+                      const activitiesSection = document.getElementById('activities')
+                      if (activitiesSection) {
+                        activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      }
+                    }}
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white/40 bg-white/10 backdrop-blur-md text-white font-bold px-8 py-6 text-base md:text-lg min-w-[200px] md:min-w-[220px] hover:bg-white/20 hover:border-white hover:shadow-xl transition-all duration-300"
+                  >
+                    Explore Activities
+                  </Button>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
@@ -534,8 +658,26 @@ export default function HomePage() {
 
         </section>
 
+        {/* Promotional Banners */}
+        <PromotionalBannersSection />
+
+        {/* Section Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-[#f39318]/30 to-transparent"></div>
+
+        {/* Why Choose Us Section */}
+        <WhyChooseUsSection />
+
+        {/* Section Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-[#FF5500]/30 to-transparent"></div>
+
+        {/* Family Sports Section */}
+        <FamilySportsSection />
+
+        {/* Section Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-[#f39318]/30 to-transparent"></div>
+
         {/* Activities Section */}
-        <section className="py-16 bg-gray-50">
+        <section id="activities" className="py-20 md:py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <motion.div
               ref={activitiesRef}
@@ -562,7 +704,7 @@ export default function HomePage() {
               </div>
               <AnimatedText
                 text="TOP SPORTS COACHING IN PUNE"
-                className="text-3xl font-bold text-gray-900 md:text-4xl"
+                className="text-4xl font-bold text-gray-900 md:text-5xl"
               />
             </motion.div>
 
@@ -581,8 +723,11 @@ export default function HomePage() {
           <CorporateEventsSection />
         </div>
 
+        {/* Section Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-[#FF5500]/30 to-transparent"></div>
+
         {/* About Section */}
-        <section id="about" className="relative py-6 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+        <section id="about" className="relative py-20 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
           {/* Background Pattern - no parallax for better performance */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
             <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000000" fill-opacity="0.2"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', backgroundSize: '60px 60px' }}></div>
@@ -603,7 +748,7 @@ export default function HomePage() {
                   variants={slideInLeft}
                 ></motion.div>
                 <motion.span
-                  className="mx-4 text-3xl uppercase tracking-wider font-semibold text-[#f39318]"
+                  className="mx-4 text-4xl md:text-5xl uppercase tracking-wider font-semibold text-[#f39318]"
                   variants={scaleIn}
                 >About Us</motion.span>
                 <motion.div
@@ -739,6 +884,29 @@ export default function HomePage() {
 
       {/* Floating Buttons */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-4">
+        {/* WhatsApp Button */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.5 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <a
+            href="https://wa.me/919876543210"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contact us on WhatsApp"
+          >
+            <Button
+              className="h-14 w-14 rounded-full bg-[#25D366] p-0 shadow-lg hover:bg-[#25D366]/90 transition-all duration-300"
+            >
+              <MessageCircle className="h-6 w-6 text-white" />
+            </Button>
+          </a>
+        </motion.div>
+
+        {/* Scroll to Top Button */}
         <motion.div
           animate={{
             scale: showScrollTop ? 1 : 0.8,
@@ -755,7 +923,6 @@ export default function HomePage() {
             <ArrowUp className="h-6 w-6" />
           </Button>
         </motion.div>
-
       </div>
     </div>
   )

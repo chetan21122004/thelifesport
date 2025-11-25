@@ -178,6 +178,229 @@ export default function RentAStudio() {
         />
       </section>
 
+      {/* Studio Specifications Section */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center justify-center gap-4 mb-6"
+            >
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#f39318]"></div>
+              <span className="text-2xl uppercase tracking-wider font-semibold text-[#f39318]">Specifications</span>
+              <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#f39318]"></div>
+            </motion.div>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
+              Studio Specifications
+            </motion.h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Rhythm Studio",
+                specs: {
+                  area: "1000 sq ft",
+                  dimensions: "40 ft × 25 ft",
+                  height: "12 ft",
+                  flooring: "Cushioned dance floor",
+                  capacity: "30-40 people",
+                  ac: "Yes"
+                }
+              },
+              {
+                title: "Vibe Studio",
+                specs: {
+                  area: "800 sq ft",
+                  dimensions: "32 ft × 25 ft",
+                  height: "12 ft",
+                  flooring: "Cushioned dance floor",
+                  capacity: "20-30 people",
+                  ac: "No (Well ventilated)"
+                }
+              },
+              {
+                title: "Beats Studio",
+                specs: {
+                  area: "800 sq ft",
+                  dimensions: "32 ft × 25 ft",
+                  height: "12 ft",
+                  flooring: "Cushioned dance floor",
+                  capacity: "20-30 people",
+                  ac: "No (Well ventilated)"
+                }
+              }
+            ].map((studio, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                whileHover={{ y: -5 }}
+              >
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">{studio.title}</h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-gray-600 font-medium">Area</span>
+                    <span className="text-gray-900 font-bold">{studio.specs.area}</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-gray-600 font-medium">Dimensions</span>
+                    <span className="text-gray-900 font-bold">{studio.specs.dimensions}</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-gray-600 font-medium">Ceiling Height</span>
+                    <span className="text-gray-900 font-bold">{studio.specs.height}</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-gray-600 font-medium">Flooring</span>
+                    <span className="text-gray-900 font-bold text-sm">{studio.specs.flooring}</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-gray-600 font-medium">Capacity</span>
+                    <span className="text-gray-900 font-bold">{studio.specs.capacity}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600 font-medium">AC</span>
+                    <span className="text-gray-900 font-bold">{studio.specs.ac}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center justify-center gap-4 mb-6"
+            >
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#f39318]"></div>
+              <span className="text-2xl uppercase tracking-wider font-semibold text-[#f39318]">Use Cases</span>
+              <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#f39318]"></div>
+            </motion.div>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
+              Perfect For Various Activities
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-gray-600 text-lg"
+            >
+              Our versatile studios accommodate a wide range of activities and events
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              { icon: "💃", title: "Dance Classes", description: "Perfect for all dance forms - classical, contemporary, hip-hop, and more" },
+              { icon: "🧘", title: "Yoga Sessions", description: "Ideal space for yoga, meditation, and wellness activities" },
+              { icon: "📸", title: "Fitness Shoots", description: "Professional photography and videography for fitness content" },
+              { icon: "🎬", title: "Photo/Video Shoots", description: "Well-lit spaces perfect for commercial and creative shoots" },
+              { icon: "🎭", title: "Rehearsals", description: "Spacious studios for theater, dance, and performance rehearsals" },
+              { icon: "📚", title: "Workshops", description: "Conduct training workshops, seminars, and educational sessions" }
+            ].map((useCase, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 text-center"
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className="text-6xl mb-4">{useCase.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{useCase.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{useCase.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Equipment Section */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center justify-center gap-4 mb-6"
+            >
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#f39318]"></div>
+              <span className="text-2xl uppercase tracking-wider font-semibold text-[#f39318]">Equipment</span>
+              <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#f39318]"></div>
+            </motion.div>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
+              Fully Equipped Studios
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-gray-600 text-lg"
+            >
+              All essential equipment included for your convenience
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-gradient-to-br from-[#f39318]/5 to-[#FF5500]/5 rounded-2xl p-8 border border-[#f39318]/20"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Standard Equipment</h3>
+              <ul className="space-y-3">
+                {["Full-length mirrors on walls", "Professional sound system", "LED lighting", "Cushioned dance floor", "Air conditioning (Rhythm Studio)", "Ventilation system", "Storage space"].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <span className="text-[#f39318] font-bold">✓</span>
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              className="bg-gradient-to-br from-[#f39318]/5 to-[#FF5500]/5 rounded-2xl p-8 border border-[#f39318]/20"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Additional Features</h3>
+              <ul className="space-y-3">
+                {["Changing rooms", "Restroom facilities", "Parking available", "Wi-Fi connectivity", "Water dispenser", "First aid kit", "Security system"].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <span className="text-[#f39318] font-bold">✓</span>
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Studio Cards Section */}
       <section className="py-24 bg-gradient-to-b from-black via-white to-gray-50">
         <div className="container mx-auto px-4">

@@ -1,8 +1,8 @@
 "use client"
 
 import { Navbar } from "@/components/navbar"
-
 import { Footer } from "@/components/footer"
+import { MobileStickyBar } from "@/components/mobile-sticky-bar"
 import { useState, useEffect } from "react"
 import "./globals.css"
 import { Preloader } from "@/components/preloader"
@@ -34,6 +34,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <MobileStickyBar />
         </div>
         
       </body>

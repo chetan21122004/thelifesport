@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,6 +21,11 @@ import {
   Play,
   ArrowRight,
 } from "lucide-react"
+import { ActivityVideoSection } from "@/components/activity-video-section"
+import { CoachInfoCard } from "@/components/coach-info-card"
+import { LearningOutcomesSection } from "@/components/learning-outcomes-section"
+import { PricingScheduleTable } from "@/components/pricing-schedule-table"
+import { SkillLevelBadges } from "@/components/skill-level-badges"
 
 export default function BadmintonCourtPage() {
   return (
@@ -47,15 +54,12 @@ export default function BadmintonCourtPage() {
               </Badge>
 
               <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                  Premier Indoor Badminton Courts in
-                  <span className="block mt-2 bg-gradient-to-r from-[#f39318] to-[#FF5500] bg-clip-text text-transparent">
-                    Pune
-                  </span>
-                </h1>
+              
                 <p className="text-base sm:text-lg md:text-xl text-[#f39318] font-semibold">
                   Book Online Now • 6 BWF Approved Courts
                 </p>
+                
+               
               </div>
 
               <div className="space-y-3 sm:space-y-4 max-w-xl">
@@ -114,6 +118,95 @@ export default function BadmintonCourtPage() {
           </div>
         </div>
       </section>
+
+   
+
+    
+
+      {/* Learning Outcomes Section */}
+      <LearningOutcomesSection
+        title="What You'll Learn in Your First Month"
+        activityName="Badminton"
+        outcomes={[
+          {
+            title: "Basic Grip & Stance",
+            description: "Master the fundamental grip techniques and proper court positioning"
+          },
+          {
+            title: "Serve Techniques",
+            description: "Learn high serve, low serve, and flick serve with proper form"
+          },
+          {
+            title: "Footwork Fundamentals",
+            description: "Develop agility and court movement patterns essential for badminton"
+          },
+          {
+            title: "Basic Strokes",
+            description: "Practice clear, drop, and smash shots with correct technique"
+          },
+          {
+            title: "Court Awareness",
+            description: "Understand court positioning and strategic play basics"
+          },
+          {
+            title: "Match Play Basics",
+            description: "Learn scoring rules and basic match strategies"
+          }
+        ]}
+      />
+
+      {/* Pricing & Schedule Section */}
+      <PricingScheduleTable
+        activityName="Badminton"
+        pricingTiers={[
+          {
+            name: "Beginner",
+            price: "₹2,500",
+            duration: "month",
+            features: [
+              "8 sessions per month",
+              "Basic technique training",
+              "Group coaching",
+              "Court access during class"
+            ]
+          },
+          {
+            name: "Intermediate",
+            price: "₹3,500",
+            duration: "month",
+            features: [
+              "12 sessions per month",
+              "Advanced technique training",
+              "Small group coaching",
+              "Court access during class",
+              "Progress tracking"
+            ],
+            popular: true
+          },
+          {
+            name: "Advanced",
+            price: "₹5,000",
+            duration: "month",
+            features: [
+              "16 sessions per month",
+              "Professional level training",
+              "Individual attention",
+              "Court access during class",
+              "Tournament preparation",
+              "Fitness training"
+            ]
+          }
+        ]}
+        schedule={[
+          { day: "Monday", time: "6:00 AM - 8:00 AM", level: "Beginner", coach: "Krantivir" },
+          { day: "Monday", time: "5:00 PM - 7:00 PM", level: "Intermediate", coach: "Krantivir" },
+          { day: "Wednesday", time: "6:00 AM - 8:00 AM", level: "Advanced", coach: "Krantivir" },
+          { day: "Wednesday", time: "5:00 PM - 7:00 PM", level: "Beginner", coach: "Krantivir" },
+          { day: "Friday", time: "6:00 AM - 8:00 AM", level: "Intermediate", coach: "Krantivir" },
+          { day: "Saturday", time: "8:00 AM - 10:00 AM", level: "Kids", coach: "Krantivir" },
+          { day: "Sunday", time: "8:00 AM - 10:00 AM", level: "Family", coach: "Krantivir" }
+        ]}
+      />
 
       {/* Key Features Section */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50 to-white">
@@ -944,101 +1037,7 @@ export default function BadmintonCourtPage() {
         </div>
       </section>
 
-      {/* Coaching Programs */}
-      <section id="coaching" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8">
-                Transform Your Game with
-                <span className="bg-gradient-to-r from-[#f39318] to-[#FF5500] bg-clip-text text-transparent">
-                  Expert Coaching
-                </span>
-              </h2>
-
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Increased Muscle Tone & Strength</h4>
-                    <p className="text-gray-600">
-                      Build lean muscle and improve overall body strength through dynamic badminton training
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Enhanced Cardiovascular Fitness</h4>
-                    <p className="text-gray-600">
-                      Improve heart health and endurance with high-intensity badminton sessions
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Superior Agility & Reflexes</h4>
-                    <p className="text-gray-600">
-                      Develop lightning-fast reflexes and court movement through specialized drills
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Effective Weight Management</h4>
-                    <p className="text-gray-600">Burn calories efficiently while having fun and improving your game</p>
-                  </div>
-                </div>
-              </div>
-
-              <Button className="mt-8 bg-gradient-to-r from-[#f39318] to-[#FF5500] hover:from-[#e8840f] hover:to-[#e54d00] text-lg px-8 py-6">
-                Start Training Today
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </div>
-
-            <div className="space-y-6">
-              <div className="relative w-full max-w-[256px] mx-auto lg:mx-0">
-                <div className="relative w-full" style={{ aspectRatio: '2/3' }}>
-                  <img
-                    src="/images/badminton_plyr2.jpg"
-                    alt="Fitness training session"
-                    className="w-full h-full object-cover rounded-2xl shadow-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4">
-                <Card className="text-center p-4 border-2 border-[#f39318]/20 hover:border-[#f39318] transition-colors">
-                  <div className="text-2xl font-bold text-[#f39318] mb-1">Basic</div>
-                  <div className="text-sm text-gray-600">Foundation & Basics</div>
-                </Card>
-                <Card className="text-center p-4 border-2 border-[#f39318]/20 hover:border-[#f39318] transition-colors">
-                  <div className="text-2xl font-bold text-[#f39318] mb-1">Inter</div>
-                  <div className="text-sm text-gray-600">Advanced Techniques</div>
-                </Card>
-                <Card className="text-center p-4 border-2 border-[#f39318]/20 hover:border-[#f39318] transition-colors">
-                  <div className="text-2xl font-bold text-[#f39318] mb-1">Pro</div>
-                  <div className="text-sm text-gray-600">Competition Level</div>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Testimonials */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-r from-[#f39318] to-[#FF5500]">
