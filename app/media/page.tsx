@@ -4,9 +4,39 @@ import { useState } from "react"
 import { X, ZoomIn } from "lucide-react"
 
 const images = [
+  
+  {
+    src: "/images/bg-1.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/bg-5.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/bg-6.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/bg-2.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+      src: "/images/bg-3.jpg",
+    width: 800,
+    height: 533,
+  },
+  {
+    src: "/images/bg-4.jpg",
+    width: 800,
+    height: 533,
+  },
   {
     src: "/images/badminton_plyr1.jpg",
-    alt: "Badminton Player",
     width: 800,
     height: 533,
   },

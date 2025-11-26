@@ -391,9 +391,14 @@ export default function HomePage() {
 
   // Hero background images for slider
   const heroImages = [
-    "/images/hero-3.jpg",
-    "/images/hero-4.jpg",
-    "/images/hero-5.jpg",
+    "/images/bg-1.jpg",
+    "/images/bg-2.jpg",
+    "/images/bg-3.jpg",
+    "/images/bg-4.jpg",
+    "/images/bg-5.jpg",
+    "/images/bg-6.jpg",
+    "/images/bg-7.jpg",
+   
   ]
 
   // Auto-advance background slider
@@ -548,7 +553,7 @@ export default function HomePage() {
           <Hero3DScene />
 
           {/* Content */}
-          <div className="container relative z-10 mx-auto flex h-[90vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+          <div className="container relative z-10 mx-auto flex h-[90vh] flex-col items-center justify-start px-4 sm:px-6 lg:px-8">
             <motion.div
               ref={heroRef}
               className="max-w-6xl w-full"
@@ -560,7 +565,7 @@ export default function HomePage() {
               <div className="text-center mb-12">
                 {/* Elegant Badge */}
                 <motion.div
-                  className="inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-black/20 backdrop-blur-md px-5 py-2 mb-8"
+                  className="inline-flex items-center gap-2.5 mt-24 rounded-full border border-white/25 bg-black/20 backdrop-blur-md px-5 py-2 mb-8"
                   variants={fadeIn}
                 >
                  
@@ -569,9 +574,7 @@ export default function HomePage() {
 
                 {/* Main Headline */}
                 <motion.div variants={fadeInUp} className="mb-6">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-4 leading-[1.1] tracking-tight drop-shadow-2xl">
-                    Invest One Hour a Day
-                  </h1>
+                 
                   <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-[#f39318] via-yellow-400 to-[#f39318] bg-clip-text text-transparent leading-tight tracking-tight">
                     Bas Ek Ghanta. Zindagi Badal Jaayegi.
                   </h2>
@@ -609,7 +612,7 @@ export default function HomePage() {
 
               {/* Bottom Section: CTA Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                className="flex  flex-col sm:flex-row gap-4 justify-center mb-5 items-center"
                 variants={fadeInUp}
               >
                 <motion.div
@@ -620,7 +623,7 @@ export default function HomePage() {
                   <Link href="/contact">
                     <Button 
                       size="lg"
-                      className="group relative overflow-hidden bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white font-bold px-8 py-6 text-base md:text-lg min-w-[200px] md:min-w-[220px] shadow-xl hover:shadow-2xl transition-all duration-300"
+                      className="group relative overflow-hidden bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white font-bold px-4 py-6 text-base md:text-lg min-w-[200px] md:min-w-[220px] shadow-xl hover:shadow-2xl transition-all duration-300"
                     >
                       <motion.span
                         className="absolute inset-0 bg-white/25"
@@ -646,7 +649,7 @@ export default function HomePage() {
                     }}
                     size="lg"
                     variant="outline"
-                    className="border-2 border-white/40 bg-white/10 backdrop-blur-md text-white font-bold px-8 py-6 text-base md:text-lg min-w-[200px] md:min-w-[220px] hover:bg-white/20 hover:border-white hover:shadow-xl transition-all duration-300"
+                    className="border-2 border-white/40 bg-white/10 backdrop-blur-md text-white font-bold  py-6 text-base md:text-lg min-w-[150px] md:min-w-[220px] hover:bg-white/20 hover:border-white hover:shadow-xl transition-all duration-300"
                   >
                     Explore Activities
                   </Button>
