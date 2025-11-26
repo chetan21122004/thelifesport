@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Phone, MessageCircle, Calendar } from "lucide-react"
+import { Phone, Calendar } from "lucide-react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 
 export function MobileStickyBar() {
   const [isVisible, setIsVisible] = useState(false)
@@ -65,7 +66,7 @@ export function MobileStickyBar() {
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center py-3 px-2 bg-white hover:bg-gray-50 active:bg-gray-100 transition-colors border-x border-gray-200"
             >
-              <MessageCircle className="w-6 h-6 text-green-600 mb-1" />
+              <WhatsAppIcon className="w-6 h-6 text-green-600 mb-1" size={24} />
               <span className="text-xs font-semibold text-gray-900">WhatsApp</span>
             </a>
 

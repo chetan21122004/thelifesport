@@ -9,8 +9,8 @@ import {
   ChevronRight,
   ChevronDown,
   ArrowUp,
-  MessageCircle,
 } from "lucide-react"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -896,7 +896,7 @@ export default function HomePage() {
           whileTap={{ scale: 0.9 }}
         >
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919767755977?text=Hi, I'm interested in learning more about The Life Sports"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contact us on WhatsApp"
@@ -904,7 +904,7 @@ export default function HomePage() {
             <Button
               className="h-14 w-14 rounded-full bg-[#25D366] p-0 shadow-lg hover:bg-[#25D366]/90 transition-all duration-300"
             >
-              <MessageCircle className="h-6 w-6 text-white" />
+              <WhatsAppIcon className="h-6 w-6 text-white" size={24} />
             </Button>
           </a>
         </motion.div>

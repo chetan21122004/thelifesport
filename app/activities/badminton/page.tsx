@@ -26,6 +26,7 @@ import { CoachInfoCard } from "@/components/coach-info-card"
 import { LearningOutcomesSection } from "@/components/learning-outcomes-section"
 import { PricingScheduleTable } from "@/components/pricing-schedule-table"
 import { SkillLevelBadges } from "@/components/skill-level-badges"
+import { BadmintonCoachesSection } from "@/components/badminton-coaches-section"
 
 export default function BadmintonCourtPage() {
   return (
@@ -566,6 +567,9 @@ export default function BadmintonCourtPage() {
           </div>
         </div>
       </section>
+
+      {/* Coaches Section */}
+      <BadmintonCoachesSection />
 
       {/* BWF Approved Flooring Section */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-900 text-white">
