@@ -6,32 +6,32 @@ import { X, ZoomIn } from "lucide-react"
 const images = [
   
   {
-    src: "/images/bg-1.jpg",
+    src: "/images/bg-1.JPG",
     width: 800,
     height: 533,
   },
   {
-    src: "/images/bg-5.jpg",
+    src: "/images/bg-5.JPG",
     width: 800,
     height: 533,
   },
   {
-    src: "/images/bg-6.jpg",
+    src: "/images/bg-6.JPG",
     width: 800,
     height: 533,
   },
   {
-    src: "/images/bg-2.jpg",
+    src: "/images/bg-2.JPG",
     width: 800,
     height: 533,
   },
   {
-      src: "/images/bg-3.jpg",
+      src: "/images/bg-3.JPG",
     width: 800,
     height: 533,
   },
   {
-    src: "/images/bg-4.jpg",
+    src: "/images/bg-4.JPG",
     width: 800,
     height: 533,
   },
