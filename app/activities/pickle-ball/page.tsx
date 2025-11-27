@@ -28,7 +28,7 @@ export default function PickleBallPage() {
       <section className="relative min-h-[90vh] flex py-5 items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://plus.unsplash.com/premium_photo-1709932754800-051606368c90?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGlja2xlYmFsbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600"
+            src="/images/bg-7.JPG"
             alt="Professional pickle ball court"
             className="w-full h-full object-cover"
           />
@@ -105,7 +105,7 @@ export default function PickleBallPage() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-2xl blur opacity-20"></div>
                 <div className="relative rounded-2xl shadow-2xl overflow-hidden aspect-[4/3] w-full">
                   <img
-                    src="/images/pickleball1.jpg"
+                    src="/images/bg-6.JPG"
                     alt="Pickle ball players in action"
                     className="w-full h-full object-cover"
                   />
@@ -465,7 +465,7 @@ export default function PickleBallPage() {
             <div className="space-y-6">
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1737476997205-b3336182f215?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+                  src="/images/bg-1.JPG"
                   alt="Pickle ball community"
                   className="w-full h-64 object-cover rounded-2xl shadow-lg"
                 />
