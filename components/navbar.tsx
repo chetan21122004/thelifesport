@@ -43,7 +43,7 @@ const activities = [
   },
   {
     name: "Cricket Net with Bowling Machine",
-    image: "/images/cricket-net.jpg",
+    image: "/images/auto-mach.jpg",
     description: "Professional practice Nets with bowling machine",
     features: ["Bowling Machine",],
     color: "from-red-400 to-rose-600",

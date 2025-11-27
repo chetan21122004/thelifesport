@@ -20,8 +20,6 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { WhyChooseUsSection } from "@/components/why-choose-us-section"
 import { FamilySportsSection } from "@/components/family-sports-section"
 import { PromotionalBannersSection } from "@/components/promotional-banners-section"
-import { MobileStickyBar } from "@/components/mobile-sticky-bar"
-
 import { Hero3DScene } from "@/components/Hero3DScene"
 
 // AutoplayCarousel Component
