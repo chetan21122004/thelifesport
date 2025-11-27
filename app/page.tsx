@@ -89,13 +89,13 @@ function AutoplayCarousel() {
     {
       title: "Pickle Ball Courts",
       description: "Experience the fastest-growing paddle sport at our premium pickle ball courts. Professional equipment, expert coaching, and a welcoming community for all skill levels.",
-      image: "/images/pickleball1.jpg",
+      image: "/images/bg-7.JPG",
       href: "/activities/pickle-ball",
     },
     {
       title: "Mini Pro Turf Facility",
       description: "Premium synthetic turf designed for multiple sports. Weather-resistant, professional-grade surface perfect for football, cricket, and various outdoor activities.",
-      image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=500&auto=format&fit=crop&q=60",
+      image: "/images/mini-turf.jpg",
       href: "/activities/mini-pro-turf",
     },
     {
@@ -398,7 +398,7 @@ export default function HomePage() {
     "/images/bg-5.JPG",
     "/images/bg-6.JPG",
     "/images/bg-7.JPG",
-   
+
   ]
 
   // Auto-advance background slider
@@ -494,7 +494,7 @@ export default function HomePage() {
                     />
                   </motion.div>
                 ))}
-                
+
                 {/* Video Background - overlays images if available (optional) */}
                 <video
                   autoPlay
@@ -539,11 +539,10 @@ export default function HomePage() {
                 aria-label={`Go to slide ${index + 1}`}
               >
                 <div
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentImageIndex
-                      ? "w-8 bg-[#f39318]"
-                      : "w-2 bg-white/40 hover:bg-white/60"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === currentImageIndex
+                    ? "w-8 bg-[#f39318]"
+                    : "w-2 bg-white/40 hover:bg-white/60"
+                    }`}
                 />
               </button>
             ))}
@@ -568,13 +567,13 @@ export default function HomePage() {
                   className="inline-flex items-center gap-2.5 mt-24 rounded-full border border-white/25 bg-black/20 backdrop-blur-md px-5 py-2 mb-8"
                   variants={fadeIn}
                 >
-                 
+
                   <span className="text-xs font-medium text-white/95 tracking-wider uppercase">Pune's Premier Sports Academy</span>
                 </motion.div>
 
                 {/* Main Headline */}
                 <motion.div variants={fadeInUp} className="mb-6">
-                 
+
                   <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-[#f39318] via-yellow-400 to-[#f39318] bg-clip-text text-transparent leading-tight tracking-tight">
                     Bas Ek Ghanta. Zindagi Badal Jaayegi.
                   </h2>
@@ -621,7 +620,7 @@ export default function HomePage() {
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
                   <Link href="/contact">
-                    <Button 
+                    <Button
                       size="lg"
                       className="group relative overflow-hidden bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white font-bold px-4 py-6 text-base md:text-lg min-w-[200px] md:min-w-[220px] shadow-xl hover:shadow-2xl transition-all duration-300"
                     >
@@ -694,7 +693,8 @@ export default function HomePage() {
                   <motion.div
                     className="h-px w-8 bg-gradient-to-r from-[#f39318] to-[#FF5500]"
                     variants={slideInLeft}
-                  ></motion.div>
+                  >
+                  </motion.div>
                   <motion.span
                     className="mx-4 text-3xl uppercase tracking-wider font-semibold bg-gradient-to-r from-[#f39318] to-[#FF5500] bg-clip-text text-transparent"
                     variants={scaleIn}
@@ -702,7 +702,8 @@ export default function HomePage() {
                   <motion.div
                     className="h-px w-8 bg-gradient-to-r from-[#FF5500] to-[#f39318]"
                     variants={slideInRight}
-                  ></motion.div>
+                  >
+                  </motion.div>
                 </div>
               </div>
               <AnimatedText
