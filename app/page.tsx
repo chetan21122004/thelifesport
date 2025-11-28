@@ -389,12 +389,12 @@ export default function HomePage() {
 
   // Hero background images for slider
   const heroImages = [
-    "/images/bg-1.JPG",
-    "/images/bg-2.JPG",
-    "/images/bg-3.JPG",
-    "/images/bg-4.JPG",
-    "/images/bg-5.JPG",
-    "/images/bg-6.JPG",
+    "/images/bg-1.webp",
+    "/images/bg-2.webp",
+    "/images/bg-3.webp",
+    "/images/bg-4.webp",
+    "/images/bg-5.webp",
+    "/images/bg-6.webp",
     "/images/bg-7.JPG",
 
   ]
