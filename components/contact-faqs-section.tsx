@@ -13,7 +13,7 @@ const faqs = [
   {
     category: "Booking",
     question: "Can I cancel my booking?",
-    answer: "Yes, you can cancel your booking up to 2 hours before the scheduled time. Cancellations made within 2 hours may be subject to charges. Please contact us for more details."
+    answer: " No cancellation, no refund, and no extension once a booking is confirmed. Our Reschedule Policy Rescheduling is only allowed within 30 minutes from the time the booking is made."
   },
   {
     category: "Membership",
@@ -23,17 +23,17 @@ const faqs = [
   {
     category: "Membership",
     question: "Do you offer trial sessions?",
-    answer: "Yes, we offer free trial sessions for new members. You can book a trial session to experience our facilities and coaching before committing to a membership."
-  },
+    answer: "Yes, trial sessions are available for gymnastics (free) and badminton (check with us for details)."
+   },
   {
     category: "Payment",
     question: "What payment methods do you accept?",
-    answer: "We accept cash, UPI, credit/debit cards, and online bank transfers. Monthly memberships can be set up with auto-debit for convenience."
+    answer: "We accept UPI, cash, and pay on-site. For online hourly bookings, we accept cash, UPI, credit/debit cards, and online bank transfers."
   },
   {
     category: "Payment",
     question: "Are there any discounts available?",
-    answer: "Yes, we offer discounts for long-term memberships, family packages, and corporate memberships. We also have seasonal promotions and referral discounts."
+    answer: "Yes,Monthly Booking Discount: Save more when you book for the entire month. Online Booking Bonus: Earn loyalty points when you book online, which can be redeemed for future savings."
   },
   {
     category: "General",
