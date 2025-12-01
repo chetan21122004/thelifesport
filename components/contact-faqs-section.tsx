@@ -15,15 +15,11 @@ const faqs = [
     question: "Can I cancel my booking?",
     answer: " No cancellation, no refund, and no extension once a booking is confirmed. Our Reschedule Policy Rescheduling is only allowed within 30 minutes from the time the booking is made."
   },
-  {
-    category: "Membership",
-    question: "What are the membership options?",
-    answer: "We offer various membership plans including monthly, quarterly, and annual memberships. We also have family packages and corporate memberships. Contact us for detailed pricing and benefits."
-  },
+
   {
     category: "Membership",
     question: "Do you offer trial sessions?",
-    answer: "Yes, trial sessions are available for gymnastics (free) and badminton (check with us for details)."
+    answer: "Yes, we provide Coaching Trial Check Sessions so you can experience the training and facilities before enrolling."
    },
   {
     category: "Payment",
