@@ -149,7 +149,7 @@ export default function GymnasticsPage() {
             >
               <Link href="/contact">
                 <button className="bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  Start Free Trial
+                  Book Trial
                 </button>
               </Link>
 
