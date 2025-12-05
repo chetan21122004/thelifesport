@@ -617,7 +617,7 @@ export default function HomePage() {
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
-                  <Link href="/contact">
+                  <Link href="https://booking.thelifesports.in/bookings">
                     <Button
                       size="lg"
                       className="group relative overflow-hidden bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white font-bold px-4 py-6 text-base md:text-lg min-w-[200px] md:min-w-[220px] shadow-xl hover:shadow-2xl transition-all duration-300"
