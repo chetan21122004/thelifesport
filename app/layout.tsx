@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import "./globals.css"
 import { Preloader } from "@/components/preloader"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 export default function RootLayout({
   children,
@@ -38,6 +39,7 @@ export default function RootLayout({
           <MobileStickyBar />
         </div>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
