@@ -628,7 +628,7 @@ export default function HomePage() {
                         whileHover={{ x: "100%" }}
                         transition={{ duration: 0.6, ease: "easeInOut" }}
                       />
-                      <span className="relative z-10">Book  Trial</span>
+                      <span className="relative z-10">Book my Court</span>
                     </Button>
                   </Link>
                 </motion.div>
