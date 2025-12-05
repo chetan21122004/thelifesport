@@ -6,6 +6,7 @@ import { MobileStickyBar } from "@/components/mobile-sticky-bar"
 import { useState, useEffect } from "react"
 import "./globals.css"
 import { Preloader } from "@/components/preloader"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function RootLayout({
   children,
@@ -36,7 +37,7 @@ export default function RootLayout({
           <Footer />
           <MobileStickyBar />
         </div>
-        
+        <SpeedInsights />
       </body>
     </html>
   )
