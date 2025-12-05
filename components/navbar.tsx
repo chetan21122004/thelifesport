@@ -192,7 +192,7 @@ export function Navbar() {
     },
     {
       name: "BOOK MY COURT",
-      href: "/book-court",
+      href: "https://booking.thelifesports.in/bookings",
       isSection: false
     },
   ]

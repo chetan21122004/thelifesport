@@ -61,111 +61,14 @@ const images = [
     width: 800,
     height: 533,
   },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img17-.jpg",
-    alt: "The Life Sports Administration",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img24.jpg",
-    alt: "Movement of dance training",
-    width: 800,
-    height: 514,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img22-.jpg",
-    alt: "Indoor badminton training",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img21.jpg",
-    alt: "Boy playing badminton",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img19-.jpg",
-    alt: "Gymnastic Coach giving instruction to beginners",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img18-.jpg",
-    alt: "Teaching Gymnastic skills to young beginner",
-    width: 800,
-    height: 533,
-  },
   
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img15-.jpg",
-    alt: "Gymnastic boy climbing rope",
-    width: 400,
-    height: 538,
-  }, 
- 
   {
     src: "/images/office-1.jpg",
     alt: "The life Sports office",
     width: 800,
     height: 533,
   },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img13-.jpg",
-    alt: "The Life Sports Office Premises",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img3.jpg",
-    alt: "Tying shoes for jogging",
-    width: 626,
-    height: 417,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img2.jpg",
-    alt: "Stretching before workout",
-    width: 626,
-    height: 417,
-  },
-  
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img1.jpg",
-    alt: "Girl doing yoga pose",
-    width: 626,
-    height: 417,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/IMG_8107.jpg",
-    alt: "Dance Classes in Pune",
-    width: 1000,
-    height: 667,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/DSC_0820-1-1-1.jpg",
-    alt: "Stretching after training",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/IMG_8068-1.jpg",
-    alt: "Professional dance trainer",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/DSC_0328-1-1-1.jpg",
-    alt: "Office enquiry help desk",
-    width: 800,
-    height: 533,
-  },
-  {
-    src: "https://www.thelifesports.in/wp-content/uploads/2020/06/img23-1.jpg",
-    alt: "Group dancing image",
-    width: 800,
-    height: 533,
-  },
+
 ]
 
 export default function PhotoGallery() {
