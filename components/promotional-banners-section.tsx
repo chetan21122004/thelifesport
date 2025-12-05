@@ -20,7 +20,7 @@ const banners = [
     id: 2,
     title: "Family Badminton Coaching",
     description: "Kids + Adults Together - Train as a family and create lasting memories",
-    cta: "Book court",
+    cta: "Book My Court",
     link: "https://booking.thelifesports.in/bookings",
     bgColor: "from-blue-600 to-purple-600",
     textColor: "text-white"
