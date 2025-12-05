@@ -12,7 +12,7 @@ const banners = [
     title: "Get 5% OFF – Post Google Review",
     description: "Share your experience and get 5% discount on your next booking",
     cta: "Post Review",
-    link: "https://www.google.com/maps/place/The+Life+Sports",
+    link: "https://share.google/769YQKGrvx9c1GG5P",
     bgColor: "from-[#f39318] to-[#FF5500]",
     textColor: "text-white"
   },
