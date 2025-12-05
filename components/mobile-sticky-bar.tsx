@@ -76,7 +76,7 @@ export function MobileStickyBar() {
               className="flex flex-col items-center justify-center py-3 px-2 bg-gradient-to-r from-[#f39318] to-[#FF5500] text-white hover:from-[#e8840f] hover:to-[#e54d00] transition-colors"
             >
               <Calendar className="w-6 h-6 mb-1" />
-              <span className="text-xs font-semibold">Book Trial</span>
+              <span className="text-xs font-semibold">Book my Court</span>
             </Link>
           </div>
         </motion.div>
