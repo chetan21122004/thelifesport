@@ -75,7 +75,7 @@ function AutoplayCarousel() {
     {
       title: "Dance Classes",
       description: "Standing among the reputed dance classes in Pune, the Life sports academy provides a platform to learn various dance forms and encourages various dancers to showcase their talent through various competitions.",
-      image: "/images/dance-1.jpg",
+      image: "/images/rythm_studio.jpg",
       href: "/activities/dance",
     },
     {

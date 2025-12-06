@@ -266,7 +266,7 @@ export default function PickleBallPage() {
               <div className="absolute -inset-4 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-2xl blur opacity-20"></div>
               <div className="relative rounded-2xl shadow-2xl overflow-hidden aspect-[4/3] w-full">
                 <img
-                  src="/images/pickleball1.jpg"
+                  src="/images/bg-7.JPG"
                   alt="Pickle ball court layout"
                   className="w-full h-full object-cover"
                 />

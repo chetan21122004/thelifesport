@@ -188,7 +188,7 @@ Day: ${formData.day}`
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/images/office-1.jpg"
+              src="/images/yuss.jpg"
               alt="Corporate Events"
               fill
               className="object-cover hover:scale-105 transition-transform duration-700"
