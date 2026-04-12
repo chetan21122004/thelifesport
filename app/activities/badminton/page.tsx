@@ -110,7 +110,7 @@ export default function BadmintonCourtPage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#f39318] to-[#FF5500] rounded-2xl blur opacity-20"></div>
                 <img
-                  src="/images/badminton-2.jpg"
+                  src="/images/badminton-5.jpg"
                   alt="Badminton players in action"
                   className="relative rounded-2xl shadow-2xl"
                 />
