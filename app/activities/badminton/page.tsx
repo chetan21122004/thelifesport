@@ -79,7 +79,7 @@ export default function BadmintonCourtPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
-                <a 
+                <a   
                   href="https://booking.thelifesports.in/bookings" 
                   target="_blank" 
                   rel="noopener noreferrer"

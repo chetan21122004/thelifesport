@@ -87,7 +87,7 @@ function AutoplayCarousel() {
     {
       title: "Pickle Ball Courts",
       description: "Experience the fastest-growing paddle sport at our premium pickle ball courts. Professional equipment, expert coaching, and a welcoming community for all skill levels.",
-      image: "/images/bg-7.JPG",
+      image: "/images/bg-7.webp",
       href: "/activities/pickle-ball",
     },
     {
@@ -395,7 +395,7 @@ export default function HomePage() {
     "/images/bg-4.webp",
     "/images/bg-5.webp",
     "/images/bg-6.webp",
-    "/images/bg-7.JPG",
+    "/images/bg-7.webp",
 
   ]
 
